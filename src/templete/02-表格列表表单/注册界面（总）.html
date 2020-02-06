@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>注册界面</title>
+</head>
+<body>
+<table align="center" width="600">
+    <caption><h3>表单</h3></caption>
+
+    <tr>
+        <td>姓名</td>
+        <td>
+            <input name="name" type="text">
+        </td>
+    </tr>
+    <!--        单选框 <input name="相同值" type="radio" >     -->
+    <tr>
+        <td>性别</td>
+        <td>
+            <input name="sex" type="radio" checked="checked"><img src="../../img/02/male.png" alt="男" width="20" height="20">男 &nbsp;&nbsp;
+            <input name="sex" type="radio"><img src="../../img/02/female.png" alt="女" width="20" height="20">女
+        </td>
+    </tr>
+
+    <!--    日期   <input type="date" >   -->
+    <tr>
+        <td>生日</td>
+        <td>
+            <input name="birthday" type="date">
+        </td>
+    </tr>
+    <tr>
+        <td>号码</td>
+        <td>
+            <input name="telephone" type="number" min="100000000000" max="19999999999">
+        </td>
+    </tr>
+    <!--  输入文本框 <input type="text">  -->
+    <tr>
+        <td>所在地区</td>
+        <td>
+            <input name="area" type="text" value="北京">
+        </td>
+    </tr>
+
+    <tr>
+        <td>婚姻状况</td>
+        <td>
+            <input type="radio" name="marriage" checked="checked">未婚
+            <input type="radio" name="marriage">已婚
+            <input type="radio" name="marriage">丧偶
+        </td>
+    </tr>
+
+    <!--  下拉列表  -->
+    <tr>
+        <td>学历</td>
+        <td>
+            <select name="学历" required="required">
+                <option value="小学">小学</option>
+                <option value="初中">初中</option>
+                <option value="高中">高中</option>
+                <option value="本科" selected="selected">本科</option>
+                <option value="硕士">硕士</option>
+                <option value="博士">博士</option>
+            </select>
+        </td>
+    </tr>
+
+    <!--  复选框 <input name="相同值" type="checkbox">  -->
+    <tr>
+        <td>喜欢的水果</td>
+        <td>
+            <input type="checkbox" name="liked">苹果
+            <input type="checkbox" name="liked">草莓
+            <input type="checkbox" name="liked">香蕉
+            <input type="checkbox" name="liked">桃子
+            <input type="checkbox" name="liked">葡萄
+        </td>
+    </tr>
+
+    <tr>
+        <td>自我介绍</td>
+        <td>
+            <textarea></textarea>
+        </td>
+    </tr>
+
+    <tr>
+        <td></td>
+        <td>
+            <input type="image" src="../../img/02/signup.jpg" width="100">
+        </td>
+    </tr>
+
+    <tr>
+        <td></td>
+        <td>
+            <input name="agree" type="checkbox" checked="checked">我同意注册条款
+        </td>
+    </tr>
+
+    <tr>
+        <td></td>
+        <td>
+            <a href="#">我是会员,立即登录</a>
+        </td>
+    </tr>
+
+    <tr>
+        <td></td>
+        <td>
+            <h3>我承诺</h3>
+            <ul>
+                <li>承诺1</li>
+                <li>承诺2</li>
+                <li>承诺3</li>
+            </ul>
+        </td>
+    </tr>
+
+</table>
+</body>
+</html>
