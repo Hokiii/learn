@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>font</title>
+    <style>
+        body {
+            font-size: 16px;/*统一浏览器显示字号大小，Google浏览器默认的文字大小为16px，字体为微软雅黑*/
+        }
+        .title {
+            font-size: 20px;
+            font-family: Arial,"Microsoft YaHei","微软雅黑","宋体",serif;/*  字体  */
+            /*  字体粗细：normal正常的字体，bold加粗 ,bolder特粗，lighter细体 ，
+            number整百的数字100-900，400=normal，700=bold*/
+            font-weight: bold;
+            /*字体风格：normal/italic斜体*/
+            font-style: italic;
+        }
+        h1 {
+            /*h1-h6默认加粗，font-weight:normal/400可让字体不加粗*/
+            font-weight: 400;
+        }
+    /*    综合性写法：font:font-style是否倾斜 font-weight是否加粗 font-size/line-height字号大小 font-family字体*/
+    /*    顺序不可更换，字号font-size和字体font-family不可省略*/
+        .title2 {
+            font: italic 700 20px "Microsoft YaHei";
+        }
+
+    </style>
+</head>
+<body>
+<!--相对长度单位：em px-->
+<!--em:相对于当前对象内文本的字体尺寸-->
+<!--px:像素，最常用-->
+<!--绝对长度单位：in cm mm pt-->
+<!--in:英寸-->
+<!--cm:厘米-->
+<!--mm:毫米-->
+<!--pt:点-->
+<!--Google浏览器默认的文字大小为16px，字体为微软雅黑-->
+<p class="title">粉红色的回忆</p>
+<p class="title2">粉红色的回忆</p>
+<p>夏天夏天悄悄过去留下小秘密</p>
+<p>压心底 压心底 不能告诉你</p>
+<p>晚风吹过温暖我心底 我又想起你</p>
+<p>总是不能忘记你</p>
+<h1>韩宝仪</h1>
+<em>韩宝仪音乐专辑</em>
+<!--字体倾斜：CSS：font-style:italic/标签<em><i>--->
+</body>
+</html>

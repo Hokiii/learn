@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>选择器</title>
+    <style>
+        /*标签选择器*/
+        p{
+            background-color: antiquewhite;
+        }
+        /*通配符选择器：不随便使用*/
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        /*类选择器：使用最多*/
+        .font100 {
+            font-size: 100px;
+        }
+        .blue {
+            color: blue;
+        }
+        .red {
+            color: red;
+        }
+        .orange {
+             color: orange;
+         }
+        .green {
+              color: green;
+          }
+        /*id选择器*/
+        #pink {
+            color: pink;
+        }
+        #color1 {
+            color: cadetblue;
+        }
+        #4 {
+            color: darkorange;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <span class="blue font100">G</span>
+    <span class="red font100">o</span>
+    <span class="orange font100">o</span>
+    <span class="blue font100">g</span>
+    <span class="green font100">l</span>
+    <span class="red font100">e</span>
+</div>
+<div>
+    <p id="color1">红豆生南国，</p>
+    <p>春来发几枝。</p>
+    <p id="pink">愿君多采撷，</p>
+    <p id="4">此物最相思。</p>
+<!--  id为单独的数字时，id选择器不起作用，id选择器一次只能选择一个标签，只能使用一次  -->
+</div>
+
+</body>
+</html>

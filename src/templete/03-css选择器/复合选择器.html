@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>复合选择器</title>
+    <style>
+        /*后代选择器：选择子孙后代*/
+        .nav a{
+            color: pink;
+        }
+        /*子元素选择器：只选离它最近的一级*/
+        div>strong {
+            color: pink;
+        }
+        /*交集选择器 ：既是。。又是。。*/
+        p.red{
+            color: red;
+        }
+
+        /*并集选择器*/
+        .bingji p,span{
+            color: darkorange;
+        }
+    </style>
+</head>
+<body>
+<!--后代选择器-->
+<div class="nav">
+    <a href="#">内部链接</a>
+    <a href="#">内部链接</a>
+    <a href="#">内部链接</a>
+</div>
+<a href="#">外部链接</a>
+<a href="#">外部链接</a>
+<a href="#">外部链接</a>
+
+<!--子元素选择器-->
+<div>
+    <strong>son</strong>
+    <strong>son</strong>
+    <strong>son</strong>
+</div>
+<div>
+    <p>
+        <strong>grandson</strong>
+        <strong>grandson</strong>
+        <strong>grandson</strong>
+    </p>
+</div>
+
+<!--交集选择器-->
+<p class="red">红色</p>
+<p class="red">红色</p>
+<p class="red">红色</p>
+<div class="red">红色</div>
+<div class="red">红色</div>
+<div class="red">红色</div>
+<p>蓝色</p>
+<p>蓝色</p>
+<p>蓝色</p>
+
+<!--并集选择器-->
+<div class="bingji">
+    <p>我和你</p>
+    <p>我和你</p>
+    <p>我和你</p>
+    <span>我和你</span>
+    <span>我和你</span>
+    <span>我和你</span>
+    <div>我和你</div>
+    <div>我和你</div>
+    <h1>我和你</h1>
+    <h1>我和你</h1>
+</div>
+</body>
+</html>
