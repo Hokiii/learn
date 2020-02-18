@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>border</title>
+    <style>
+        .border {
+            width: 200px;
+            height: 200px;
+            border-style: solid;
+            /*边框样式：默认无边框，solid实线，dashed虚线，dotted点线*/
+            border-width: 1px;
+            /*边框粗细*/
+            border-color: pink;
+            /*边框颜色*/
+            /*简写border: 边框粗细 边框样式 边框颜色;*/
+
+        }
+        input{
+            /*border-top: none;*/
+            /*border-left: none;*/
+            /*border-right: none;*/
+            /*border-bottom: 1px dashed black;*/
+            border: none;
+            border-bottom: 1px dashed black;
+        }
+
+        .padding {
+            width: 200px;
+            height: 200px;
+            border: 1px solid red;
+            padding-left: 10px;
+            padding-top: 30px;
+        }
+        .margin{
+            width: 800px;
+            height: 200px;
+            background-color: pink;
+            margin: 10px auto;
+            /*盒子水平居中：左右外边距auto*/
+            text-align: center;
+            line-height: 200px;
+        }
+    </style>
+</head>
+<body>
+<h1>1.border</h1>
+<hr>
+<div class="border"></div>
+<br>
+
+<label for="user">User:</label>
+<input type="text" id="user">
+<br>
+<label for="password">Password:</label>
+<input type="password" id="password">
+
+<h1>2.padding</h1>
+<hr>
+<div class="padding">哈哈哈哈</div>
+<p>给盒子指定padding后</p>
+<ul>
+    <li>内容和边框之间有了距离，添加了内边距</li>
+    <li>盒子变大</li>
+</ul>
+<p>简写</p>
+<table border="1" cellspacing="0">
+    <tr>
+        <th>值的个数</th>
+        <th>表达意思</th>
+    <tr>
+        <td>1个值</td>
+        <td>padding:上，下，左，右内边距</td>
+    </tr>
+    <tr>
+        <td>2个值</td>
+        <td>padding：上下内边距，左右内边距</td>
+    </tr>
+    <tr>
+        <td>3个值</td>
+        <td>padding：上内边距，左右内边距，下内边距</td>
+    </tr>
+    <tr>
+        <td>4个值</td>
+        <td>padding：上内边距，右内边距，下内边距，左内边距</td>
+    </tr>
+    </table>
+<p>盒子的实际宽度：内容宽度 高度+内边距+边框</p>
+<p>不改变盒子大小解决办法：内边距一定要给的，只能改变内容宽度，width-内边距</p>
+<p>如果盒子里的内容没有宽度，padding不会撑开盒子</p>
+
+<h1>3.margin</h1>
+<hr>
+<div class="margin"></div>
+<div class="margin"></div>
+<hr>
+<p>简写写法与padding完全相同</p>
+<p>盒子水平居中：左右外边距auto</p>
+<p>文字居中和盒子居中的区别</p>
+<ul>
+    <li>文字水平居中是text-align:center;而且可以让行内元素和行内块元素水平居中对齐。</li>
+    <li>盒子水平居中是左右margin设为auto</li>
+</ul>
+<div class="margin">text <input type="text"></div>
+
+<h1>4.注意</h1>
+<hr>
+<p>1）为了浏览器兼容性，首先应清楚元素的内外边距（重要）</p>
+<pre>
+    *{
+        margin:0;
+        padding:0;
+    }
+</pre>
+<p>2）行内元素为了照顾兼容性，尽量只设置左右内外边距，不要设置上下内外边距</p>
+
+<h1>5.外边距合并</h1>
+<hr>
+<p>1）相邻块元素垂直边距会合并：上面的盒子有下外边距，下面的盒子有上外边距，他们之间的垂直间距不是两个边距之和而是去两个中较大的值。</p>
+<strong>解决方案：尽量只给一个盒子添加margin值</strong>
+<p>2）嵌套元素垂直外边距的合并（塌陷）：父元素没有上内边距及边框，父元素的垂直外边距会和子元素的垂直边距合并，合并后的外边距为两个中较大的值。</p>
+<strong>
+    解决方案：①给父元素定义上边框；②给父元素定义上内边距；③给父元素添加overflow:hidden;
+</strong>
+</body>
+</html>

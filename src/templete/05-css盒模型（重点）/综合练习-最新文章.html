@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>最新文章界面练习</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        li {
+            list-style: none;
+        }
+        .box{
+            margin: 50px auto;
+            /*块级盒子水平居中*/
+            padding: 15px;
+            /*一个盒子给了padding值，会撑大盒子，宽高应减去padding值*/
+            /*width: 328px;*/
+            /*height: 228px;*/
+            width: 298px;
+            height: 198px;
+            border:1px solid #cccccc;
+            background-image: url("../../img/05/bg.jpg");
+        }
+        .box h2{
+            font-size: 18px;
+            padding: 5px 0;
+            border-bottom: 1px solid #ccc;
+            margin-bottom: 5px;
+        }
+        .box ul li {
+            height: 30px;
+            border-bottom: 1px dashed #cccccc;
+            background: url("../../img/05/right.png") no-repeat 5px center;
+            /*因为这个li没有宽度所以不会撑开盒子*/
+            padding-left: 20px;
+        }
+        .box ul li a {
+            color: #333333;
+            line-height: 30px;
+            font-size: 12px;
+            text-decoration: none;
+            /*margin-left: 20px;*/
+            /*padding-left: 20px;*/
+        }
+        .box ul li a:hover {
+            text-decoration: underline;
+        }
+        </style>
+</head>
+<body>
+<div class="box">
+    <!--    caption box-->
+    <h2>最新文章/New Articles</h2>
+    <!--    list box-->
+    <ul>
+        <li><a href="#">北京招聘网页设计,平面设计,php</a></li>
+        <li><a href="#">体验JavaScript的魅力</a></li>
+        <li><a href="#">jQuery世界的来临</a></li>
+        <li><a href="#">网页设计师的梦想</a></li>
+        <li><a href="#">jQuery中的链式编程是什么</a></li>
+    </ul>
+</div>
+</body>
+</html>
