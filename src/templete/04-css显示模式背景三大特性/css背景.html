@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>css背景</title>
+    <style>
+        .bg{
+            width: 400px;
+            height: 300px;
+            color: #ffffff;
+            background-color: pink;
+            /*默认透明*/
+            background-image: url("../../img/04/bg.jpg");
+            /*默认平铺*/
+            background-repeat: no-repeat;
+            /*不平铺*/
+            /*background-repeat: repeat-x;*/
+            /*横向平铺*/
+            /*background-repeat: repeat-y;*/
+            /*纵向平铺*/
+
+            /*background-position图片位置*/
+            background-position: center center;
+            /*坐标*/
+            /*坐标原点为左上角*/
+            /*y越往下越大*/
+            /*background-position: x坐标 y坐标;*/
+            /*方位*/
+            /*background-position: right top;右上角*/
+            /*background-position: left bottom;左下角*/
+            /*background-position: center center;水平垂直居中*/
+            /*如果只指定了一个方位名词，另一个默认居中对齐*/
+            /*background-position: top;*/
+            /*坐标和方位可以混合使用*/
+        }
+        /*超大背景处理方法*/
+        body{
+            /*background-color: #3c3c3c;*/
+            /*background-image: url("../../img/04/bgbigger.jpg");*/
+            /*background-repeat: no-repeat;*/
+            /*background-position: center top;*/
+            /*背景固定  默认滚动*/
+            /*background-attachment: fixed;*/
+            /* 简写background: 背景颜色 背景图片地址 背景平铺 背景滚动 背景位置;*/
+            background: #3c3c3c url("../../img/04/bgbigger.jpg") no-repeat fixed center top;
+        }
+        .icon{
+            width: 150px;
+            height: 35px;
+            background-color: orange;
+            background-image: url("../../img/04/dot.png");
+            background-repeat: no-repeat;
+            background-position: 10px;
+            /*靠左10px，垂直居中*/
+        }
+        </style>
+</head>
+<body>
+<div class="bg">12312378978978978978978789789789789789</div>
+<div class="icon"></div>
+<div class="icon"></div>
+<div class="icon"></div>
+<div class="icon"></div>
+<div class="icon"></div>
+<div class="icon"></div>
+<div class="icon"></div>
+<div class="icon"></div>
+<div class="icon"></div>
+<div class="icon"></div>
+<div class="icon"></div>
+<div class="icon"></div>
+<div class="icon"></div>
+<div class="icon"></div>
+<div class="icon"></div>
+<div class="icon"></div>
+<div class="icon"></div>
+<div class="icon"></div>
+<div class="icon"></div>
+<div class="icon"></div>
+<div class="icon"></div>
+<div class="icon"></div>
+</body>
+</html>
