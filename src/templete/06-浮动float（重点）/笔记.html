@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>笔记</title>
+</head>
+<body>
+<h1>1.浮动(float)</h1>
+<hr>
+<h2>1.1 CSS布局的三种机制</h2>
+<p>网页布局的核心--用CSS来摆放盒子</p>
+<p>CSS提供了三种机制来设置盒子的摆放位置,分别是普通流(标准流),浮动和定位</p>
+<strong>1.普通流(标准流)</strong>
+<ul>
+    <li>
+        <strong>块级元素</strong>会独占一行,<strong>从上到下</strong>顺序排列 <br>
+        常用元素:div,p,hr,h1~6,table,form,ul,ol,dl
+    </li>
+    <li>
+        <strong>行内元素</strong>会按顺序,<strong>从左到右</strong>排列,碰到父元素边缘自动换行 <br>
+        常用元素:span,a,em,i
+    </li>
+</ul>
+<strong>2.浮动</strong>
+<br>
+让盒子从普通流中<strong>浮</strong>(脱离)起来,主要作用是让多个块级盒子一行显示.
+<br><br>
+<strong>3.定位</strong>
+<br>
+将盒子<strong>定</strong>在浏览器的某个位置--CSS离不开定位,特别是后面的js特效.
+<br>
+
+<h2>1.2 什么是浮动(float)</h2>
+<p><strong>概念:</strong>元素的浮动是指设置了浮动属性的元素会</p>
+1.脱离普通流的控制 <br>
+2.移动到指定位置
+<p><strong>作用:</strong></p>
+1.<strong>让多个盒子(div)水平排列成一行</strong>,使得浮动成为布局的重要手段 <br>
+2.可以实现盒子的左右对齐等 <br>
+3.浮动是最早用来<strong>控制图片</strong>,实现<strong>文字环绕图片的效果</strong>
+<br><br>
+<table border="1" cellspacing="0">
+    <tr>
+        <th>特点</th>
+        <th>说明</th>
+    <tr>
+        <td>浮</td>
+        <td>加了浮动的盒子是浮起来的,漂浮在其他标准流盒子的上面</td>
+    </tr>
+    <tr>
+        <td>漏</td>
+        <td>加了浮动的盒子是不占位置的,他原来的位置漏给了标准流的盒子</td>
+    </tr>
+    <tr>
+        <td>特</td>
+        <td>特别注意:浮动元素会改变display属性,类似转换成行内块,但元素之间没有空白缝隙</td>
+    </tr>
+    </table>
+<strong>注意:浮动元素是互相贴靠在一起的,但如果父元素宽度容纳不下这些浮动的盒子,多出的盒子会另起一行对齐</strong>
+
+<h2>1.3 浮动(float)的应用</h2>
+<p>小米案例练习+导航栏案例练习</p>
+
+<h2>1.4 浮动(float)的扩展</h2>
+<strong>1).浮动元素与父盒子的关系</strong><br>
+<ul>
+    <li>子盒子的浮动参照父盒子对齐</li>
+    <li>不会与父盒子的边框重叠,也不会超过父盒子的内边距</li>
+</ul>
+
+<strong>2).浮动元素与兄弟盒子的关系</strong><br>
+在一个父级盒子中,如果<strong>前一个盒子的兄弟盒子</strong>是<br>
+<strong>- 浮动</strong>的,那么当前的盒子会与前一个盒子的顶部对齐 <br>
+<strong>- 普通流</strong>的,那么当前的盒子会显示在前一个兄弟盒子的下方 <br><br>
+<strong>注意:浮动元素只会影响当前的或是后面的盒子,不会影响前面的标准流</strong><br>
+<strong>建议:如果一个盒子里有多个子盒子,如果其中一个盒子浮动,其他兄弟也应该浮动,防止引起问题</strong><br>
+<br>
+
+<h1>2.清除浮动</h1>
+<hr>
+<h2>2.1 为什么要清除浮动</h2>
+- 由于浮动元素不再占用原文档流的位置,所以会对后面元素排版产生影响 <br>
+- 准确来说,并不是清除浮动,而是清除浮动后造成的影响 <br><br>
+
+<h2>2.2 清除浮动的本质</h2>
+<strong>清除浮动主要是为了解决父元素因为子元素浮动而引起父元素内部高度为0的问题,清除浮动后,父级就会根据浮动的子盒子自动检测高度.父级有了高度,就不会影响下面的标准流.</strong>
+
+<h2>2.3 清除浮动的方法</h2>
+<h3>(1).额外标签法(隔墙法)</h3>
+<strong>在最后一个浮动元素末尾添加一个空标签,.clear { clear:both;  },或其他标签br等亦可</strong> <br>
+<strong>- 优点:</strong>通俗易懂,书写方便 <br>
+<strong>- 缺点:</strong>添加许多无意义的标签,结构化较差 <br>
+
+<h3>(2).父级添加overflow属性方法</h3>
+<strong>可以给父级添加overflow为hidden/auto/scroll 都可以实现</strong> <br>
+<strong>- 优点:</strong>代码简洁 <br>
+<strong>- 缺点:</strong>内容增多时容易造成不会自动换行导致内容被隐藏,无法显示需要溢出的元素 <br>
+
+<h3>(3).使用after伪元素清除浮动</h3>
+<strong>在父级调用清除浮动的样式</strong>
+<pre>
+    .clearfix:after {
+        content: "";
+        display: block;
+        height: 0;
+        visibility: hidden;
+        clear: both;
+    }
+    .clearfix {
+        *zoom: 1;/*ie6,7专门清除浮动的样式*/
+    }
+</pre>
+<strong>- 优点:</strong>符合闭合浮动思想,结构语义化正确 <br>
+<strong>- 缺点:</strong>由于ie6,7不支持:after,使用zoom:1触发hasLayout <br>
+代表网站:百度,淘宝等 <br>
+
+<h3>(4).使用双伪元素清除浮动</h3>
+<strong>在父级调用清除浮动的样式(双伪类)</strong>
+<pre>
+    .clearfix:before,
+    .clearfix:after {
+        content: "";
+        display: table;
+    }
+    .clearfix:after {
+        clear: both;
+    }
+    .clearfix {
+        *zoom: 1;
+    }
+</pre>
+<strong>- 优点:</strong>代码更简洁 <br>
+<strong>- 缺点:</strong>由于ie6,7不支持:after,使用zoom:1触发hasLayout <br>
+代表网站:小米,腾讯等 <br>
+
+<h2>2.4 清除浮动总结</h2>
+<strong>何时清除浮动</strong><br>
+1.父级没高度; <br>
+2.子盒子浮动;<br>
+3.影响下面的布局.<br><br>
+<table border="1" cellspacing="0">
+    <tr>
+        <th>清除浮动的方式</th>
+        <th>优点</th>
+        <th>缺点</th>
+    <tr>
+        <td>额外标签法</td>
+        <td>通俗易懂,书写方便</td>
+        <td>添加许多无意义的标签,结构化较差</td>
+    </tr>
+    <tr>
+        <td>父级overflow:hidden;</td>
+        <td>书写简单</td>
+        <td>溢出隐藏</td>
+    </tr>
+    <tr>
+        <td>父级伪元素</td>
+        <td>结构语义化正确</td>
+        <td>ie6,7不支持after,兼容性问题</td>
+    </tr>
+    <tr>
+        <td>父级双伪元素</td>
+        <td>结构语义化正确</td>
+        <td>ie6,7不支持after,兼容性问题</td>
+    </tr>
+    </table>
+</body>
+</html>

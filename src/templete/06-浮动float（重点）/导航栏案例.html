@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>导航栏案例</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        li {
+            list-style: none;
+        }
+        .banner {
+            width: 1100px;
+            height: 150px;
+            background-color: pink;
+            margin: auto;
+        }
+        .banner img {
+            width: 100%;
+            height: 100%;
+        }
+        .nav {
+            width: 1100px;
+            height: 32px;
+            /*background-color: pink;*/
+            margin: 0 auto;
+            background: url("../../img/06/nav.jpg") repeat-x;
+        }
+        .nav ul li {
+            /*因为li让文字竖着显示,所以必须给li添加浮动*/
+            float: left;
+        }
+        .nav ul li a {
+            display: block;
+            width: 72px;
+            height: 32px;
+            line-height: 32px;
+            text-align: center;
+            color: #333333;
+            font-size: 12px;
+            text-decoration: none;
+        }
+        .nav ul li a:hover {
+            background: url("../../img/06/navh.jpg")
+        }
+    </style>
+</head>
+<body>
+<!--banner是广告条-->
+<div class="banner"><img src="../../img/06/banner.jpg" height="240" width="2452"/></div>
+<!--nav是导航栏-->
+<div class="nav">
+<!--    以后网站导航栏都采用li+a的模式-->
+    <ul>
+        <li><a href="#">网站首页</a></li>
+        <li><a href="#">网站首页</a></li>
+        <li><a href="#">网站首页</a></li>
+        <li><a href="#">网站首页</a></li>
+        <li><a href="#">网站首页</a></li>
+        <li><a href="#">网站首页</a></li>
+    </ul>
+</div>
+</body>
+</html>
