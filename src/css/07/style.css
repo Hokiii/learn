@@ -1,0 +1,409 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+body {
+    background-color: #f3f5f7;
+    height: 3000px;
+}
+li {
+    list-style: none;
+}
+a {
+    text-decoration: none;
+}
+/*去掉button自带的边框*/
+button {
+    border: none;
+}
+.w {
+    width: 1200px;
+    margin: auto;
+}
+/*清除浮动*/
+.clearfix:before,
+.clearfix:after {
+    content: "";
+    display: table;
+}
+.clearfix:after {
+    clear: both;
+}
+.clearfix{
+    *zoom: 1;
+}
+
+/*header start*/
+.header {
+    height: 42px;
+    /*background-color: pink;*/
+    margin: 30px auto;
+}
+
+.logo {
+    float: left;
+    margin-right: 60px;
+}
+
+.nav {
+    float: left;
+}
+
+.nav ul li {
+    float: left;
+}
+
+.nav ul li a {
+    display: block;
+    height: 40px;
+    margin-right: 20px;
+    padding: 0 10px;
+    line-height: 40px;
+    color: #050505;
+}
+
+.nav ul li a:hover {
+    border-bottom: 2px solid #00a4ff;
+}
+
+.search {
+    float: left;
+    margin-left: 70px;
+}
+
+.search input {
+    float: left;
+    /*width: 360px;*/
+    width: 340px;
+    height: 40px;
+    border: 1px solid #00a4ff;
+    border-right: none;
+    padding-left: 20px;
+    /*会撑大盒子，宽度相应减20px*/
+    color: #cccccc;
+}
+/*行内块之间会有一个空隙，给input和button都添加浮动可清除缝隙*/
+.search button {
+    float: left;
+    width: 50px;
+    height: 42px;
+    background-image: url("../../img/07/btn.png");
+}
+
+.user {
+    float: left;
+    height: 42px;
+    line-height: 42px;
+    margin-left: 30px;
+    font-size: 14px;
+    color: #666666;
+}
+
+/*header end*/
+
+/*banner start*/
+.banner {
+    height: 420px;
+    background: #1c036c url("../../img/07/banner1.png") no-repeat top center;
+}
+
+.subnav {
+    float: left;
+    width: 150px;
+    height: 420px;
+    padding: 0 20px;
+    background: rgba(0,0,0,.3);
+}
+
+.subnav li {
+    height: 45px;
+    line-height: 45px;
+}
+
+.subnav li a {
+    color: #ffffff;
+    font-size: 14px;
+}
+
+.subnav li a:hover {
+    color: #00b4ff;
+}
+
+.subnav span {
+    float: right;
+}
+
+.course {
+    /*因为子盒子有了浮动，就不会有外边距塌陷的问题*/
+    float: right;
+    width: 228px;
+    height: 300px;
+    background-color: #ffffff;
+    margin-top: 50px;
+}
+
+.course-hd {
+    height: 48px;
+    background-color: #9bceea;
+    font-size: 18px;
+    /*文字加粗*/
+    font-weight: 700;
+    text-align: center;
+    line-height: 48px;
+    color: #ffffff;
+}
+
+.course-bd {
+    /*没有宽度的盒子给了padding值不会撑开盒子*/
+    padding: 0 15px;
+}
+
+.course-bd ul {
+    /*外边距塌陷*/
+    /*margin-top: 10px;*/
+    padding-top: 10px;
+}
+.course-bd li {
+    height: 50px;
+    border-bottom: 1px solid #cccccc;
+    margin-top: 10px;
+}
+
+.course-bd li h4 {
+    font-size: 14px;
+    color: #4e4e4e;
+}
+.course-bd li p {
+    font-size: 12px;
+    color: #a5a5a5;
+}
+
+.all{
+    display: block;
+    height: 38px;
+    border: 1px solid #00a4ff;
+    margin-top: 10px;
+    line-height: 38px;
+    text-align: center;
+    color: #00a4ff;
+}
+.all:hover {
+    background-color: #00a4ff;
+    color: #ffffff;
+}
+/*banner end*/
+
+/*goods start*/
+.goods {
+    height: 60px;
+    background-color: #fff;
+    margin-top: 10px;
+    line-height: 60px;
+    box-shadow: 2px 2px 5px rgba(0,0,0,.2);
+}
+.goods h3 {
+    float: left;
+    font-size: 16px;
+    color: #00a4ff;
+    margin: 0 30px;
+}
+.goods-item {
+    float: left;
+    color: #bfbfbf;
+}
+.goods-item a {
+    font-size: 16px;
+    color: #050505;
+    margin: 0 30px;
+}
+.mod {
+    float: right;
+    color: #00a4ff;
+    font-size: 14px;
+    margin-right: 30px;
+}
+/*goods end*/
+
+/*box start*/
+.box {
+    margin-top: 15px;
+}
+.box-hd {
+    height: 60px;
+    line-height: 60px;
+}
+.box-hd h3 {
+    float: left;
+    font-size: 20px;
+    color: #494949;
+    font-weight: 400;
+    /*让加粗的字体不变粗*/
+}
+.box-hd a {
+    float: right;
+    margin-right: 30px;
+    font-size: 12px;
+    color: #a5a5a5;
+}
+.box-bd {
+    width: 1215px;
+    /*box-bd 宽度超过了版心1200是可以的,就解决了li掉下来的问题*/
+}
+.box-bd li {
+    float: left;
+    width: 228px;
+    height: 270px;
+    background-color: #fff;
+    margin-right: 15px;
+    margin-bottom: 15px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, .2);
+}
+.box-bd li img {
+    width: 100%;
+}
+.box-bd li h4 {
+    margin: 20px;
+    font-size: 14px;
+    color: #050505;
+    font-weight: 400;
+}
+.box-bd li p {
+    margin: 20px;
+    font-size: 12px;
+    color: #999999;
+}
+.box-bd p span {
+    color: #ff7c2d;
+}
+/*box end*/
+
+/*content start*/
+.content{
+    margin-top: 15px;
+}
+.content-hd {
+    height: 60px;
+    line-height: 60px;
+}
+.content-hd h3 {
+    width: 228px;
+    float: left;
+    font-size: 20px;
+    color: #494949;
+    font-weight: 400;
+    /*让加粗的字体不变粗*/
+}
+.refer {
+    float: left;
+    height: 60px;
+    text-align: center;
+}
+.refer ul {
+    margin-left: 160px;
+}
+.refer li {
+    float: left;
+    margin-right: 70px;
+}
+.refer li a {
+    font-size: 16px;
+    color: #868686;
+}
+.refer li a:hover{
+    color: #00a4ff;
+}
+.content-hd a {
+    float: right;
+    margin-right: 30px;
+    font-size: 12px;
+    color: #a5a5a5;
+}
+.content-bd {
+    height: 392px;
+}
+.content-bd img {
+    float: left;
+}
+.subbox {
+    float: left;
+}
+.subbox-hd {
+    margin-left: 15px;
+}
+.subbox-bd li{
+    float: left;
+    width: 228px;
+    height: 278px;
+    background-color: #fff;
+    margin-top: 15px;
+    margin-left: 15px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, .2);
+}
+.subbox-bd li img{
+    width: 100%;
+}
+.subbox-bd li h4 {
+    float: left;
+    margin: 20px;
+    font-size: 14px;
+    color: #050505;
+    font-weight: 400;
+}
+.subbox-bd li p {
+    margin: 20px;
+    font-size: 12px;
+    color: #999999;
+}
+.subbox-bd p span {
+    color: #ff7c2d;
+}
+/*content end*/
+
+/*footer start*/
+.footer {
+    margin-top: 15px;
+    height: 385px;
+    background-color: #fff;
+    padding-top: 30px;
+}
+.copyright {
+    float: left;
+}
+.copyright p {
+    font-size: 12px;
+    color: #666666;
+    margin: 20px 0 15px 0;
+}
+.app {
+    display: block;
+    width: 118px;
+    height: 34px;
+    border: 1px solid #00a4ff;
+    line-height: 38px;
+    text-align: center;
+    color: #00a4ff;
+}
+.app:hover {
+    background-color: #00a4ff;
+    color: #ffffff;
+}
+.links {
+    float: right;
+}
+.links dl {
+    float: left;
+    margin: 0 30px 0 115px;
+}
+.links dt {
+    height: 35px;
+    font-size: 16px;
+    color: #333;
+}
+.links dd a {
+    font-size: 12px;
+    color: #333333;
+}
+.links dd a:hover {
+    text-decoration: underline;
+}
+/*footer end*/
