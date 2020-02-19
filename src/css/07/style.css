@@ -4,7 +4,6 @@
 }
 body {
     background-color: #f3f5f7;
-    height: 3000px;
 }
 li {
     list-style: none;
@@ -250,6 +249,7 @@ button {
     /*box-bd 宽度超过了版心1200是可以的,就解决了li掉下来的问题*/
 }
 .box-bd li {
+    position: relative;
     float: left;
     width: 228px;
     height: 270px;
@@ -257,6 +257,12 @@ button {
     margin-right: 15px;
     margin-bottom: 15px;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, .2);
+}
+.box-bd .hot {
+    position: absolute;
+    top: 0;
+    right: -4px;
+    width: 40px;
 }
 .box-bd li img {
     width: 100%;
@@ -324,13 +330,59 @@ button {
 .content-bd img {
     float: left;
 }
-.subbox {
+.rightbox {
     float: left;
 }
-.subbox-hd {
+.rightbox-hd {
+    position: relative;
     margin-left: 15px;
+    height: 100px;
 }
-.subbox-bd li{
+
+.arr-l,
+.arr-r {
+    position: absolute;
+    top: 50%;
+    width: 20px;
+    height: 20px;
+    background-color: rgba(0, 0, 0, .3);
+}
+.arr-l {
+    left: 0;
+    margin-top: -10px;
+    text-align: left;
+    border-radius: 0 20px 20px 0;
+}
+.arr-r {
+    right: 0;
+    margin-top: -10px;
+    text-align: right;
+    border-radius: 20px 0 0 20px;
+}
+
+.circle ul {
+    position: absolute;
+    left: 50%;
+    margin-left: -40px;
+    bottom: 7px;
+    width: 80px;
+    height: 10px;
+    background-color: rgba(255, 255,255, .5);
+    border-radius: 7px;
+}
+.circle li {
+    float: left;
+    width: 6px;
+    height: 6px;
+    margin: 2px 7px;
+    background-color: #fff;
+    border-radius: 100%;
+}
+.circle .current {
+    background-color: orangered;
+}
+.rightbox-bd li{
+    position: relative;
     float: left;
     width: 228px;
     height: 278px;
@@ -339,22 +391,30 @@ button {
     margin-left: 15px;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, .2);
 }
-.subbox-bd li img{
+
+.rightbox-bd .hot {
+    position: absolute;
+    top: 0;
+    right: -4px;
+    width: 40px;
+}
+
+.rightbox-bd li img{
     width: 100%;
 }
-.subbox-bd li h4 {
+.rightbox-bd li h4 {
     float: left;
     margin: 20px;
     font-size: 14px;
     color: #050505;
     font-weight: 400;
 }
-.subbox-bd li p {
+.rightbox-bd li p {
     margin: 20px;
     font-size: 12px;
     color: #999999;
 }
-.subbox-bd p span {
+.rightbox-bd p span {
     color: #ff7c2d;
 }
 /*content end*/
@@ -407,3 +467,13 @@ button {
     text-decoration: underline;
 }
 /*footer end*/
+
+.pet {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+}
+.pet img {
+    width: 150px;
+    height: 150px;
+}

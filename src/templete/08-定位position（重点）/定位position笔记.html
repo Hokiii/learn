@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>定位</title>
+</head>
+<body>
+<h1>定位详解</h1>
+<p><strong>定位是用来布局的</strong></p>
+<strong>定位 = 定位模式 + 边偏移</strong>
+
+<h2>1.边偏移</h2>
+<hr>
+<p>需要定位的盒子是通过边偏移来移动位置的</p>
+<p>在CSS中,通过top,bottom,left,right属性来定义元素的<strong>边偏移</strong>(方位名词),边偏移属性定义元素相对于其父元素相应边线的距离.</p>
+
+<h2>2.定位模式</h2>
+<hr>
+<p>在CSS中,通过position属性定义元素的<strong>定位模式</strong>,语法如下:</p>
+<pre>
+    选择器 { position: 属性值; }
+</pre>
+<table border="1" cellspacing="0" width="500">
+    <tr>
+        <th>值</th>
+        <th>语义</th>
+    <tr>
+        <td>static</td>
+        <td>静态定位</td>
+    </tr>
+    <tr>
+        <td>relative</td>
+        <td>相对定位</td>
+    </tr>
+    <tr>
+        <td>absolute</td>
+        <td>绝对定位</td>
+    </tr>
+    <tr>
+        <td>fixed</td>
+        <td>固定定位</td>
+    </tr>
+    </table>
+
+<h3>2.1 静态定位static</h3>
+<p><strong>-静态定位</strong>是元素默认的定位方式,按照标准流的特性摆放位置,没有边偏移</p>
+
+<h3>2.2 相对定位relative(重要)</h3>
+<p><strong>相对定位</strong>是元素相对于它原来在标准流中的位置来说的</p>
+<p>相对定位的特点</p>
+ - 相对于自己原来在标准流中的位置移动; <br>
+ - 原来<strong>在标准流中的位置继续占有</strong>,后面的盒子仍以标准流的方式对待它.
+
+<h3>2.3 绝对定位absolute(重要)</h3>
+<p><strong>绝对定位</strong>元素以带有定位的父元素来移动元素的位置</p>
+<p>绝对定位的特点</p>
+- 完全脱标 -- 完全不占位置; <br>
+- 绝对定位是以带有定位的父级元素来移动位置的,<strong>父元素都没有定位</strong>,则以<strong>浏览器</strong>为定位标准.
+<p>由于绝对定位的盒子是以带有定位的父级元素来移动位置的,所以要和父级搭配使用.</p>
+<p><strong>子绝父相 -- 子级是绝对定位,父级要使用相对定位</strong></p>
+
+<h3>2.4 固定定位fixed(重要)</h3>
+<p><strong>固定定位</strong>是<strong>绝对定位</strong>的一种特殊形式</p>
+<p>固定定位的特点</p>
+- 完全脱标 -- 完全不占位置; <br>
+- 只认<strong>浏览器的可视窗口</strong>--浏览器的可视窗口+边偏移属性来确定元素位置
+<pre>
+    跟父元素没有任何关系
+    不随滚动条滚动
+</pre>
+
+<h2>3.定位position的扩展</h2>
+<h3>3.1 绝对定位的盒子居中</h3>
+<p><strong>注意:绝对定位/固定定位的盒子不能通过设置 margin: auto; 来设置水平居中.</strong></p>
+<p>要想实现绝对定位时的水平居中,步骤:</p>
+<pre>
+    第一步: left: 50%; 让盒子左侧移动到父级元素的水平中心位置;
+    第二步: margin-left: -100px; 让盒子向左移动自身宽度的一半(假设盒子宽度为200px).
+</pre>
+
+<h3>3.2 堆叠顺序</h3>
+<p>通过设置<strong>z-index</strong>来改变堆叠顺序,数值越大越靠上,只在定位 position 中有用,其他标准流中不起作用</p>
+
+<h3>3.3 定位改变display属性</h3>
+<pre>
+    display是显示模式,可以改变显示模式有以下方式:
+    -可以直接display: inline-block;转换为行内块
+    -可以用浮动float默认转换为行内块(类似,但不完全一样,因为浮动是脱标的)
+    -绝对定位和固定定位也和浮动类似,默认转换的特性类似行内块
+    所以一个行内的盒子,如果加了浮动,固定定位和绝对定位,不用转换,可以直接设置宽高等
+</pre>
+<p><strong>注意:</strong>浮动元素,绝对定位的元素都<strong>不会发生外边距合并的问题</strong>,所以可以用来解决外边距合并的问题</p>
+<p></p>
+</body>
+</html>
