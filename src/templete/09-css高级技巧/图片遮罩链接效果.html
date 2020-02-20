@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>图片遮罩链接效果</title>
+    <style>
+        .box {
+            position: relative;
+            width: 500px;
+            height: 313px;
+            margin: 100px auto;
+        }
+        .mask {
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 500px;
+            height: 313px;
+            background: rgba(0, 0, 0, .3) url("../../img/09/arr.png") no-repeat center center;
+        }
+       .box a:hover .mask{
+           display: block;
+       }
+    </style>
+</head>
+<body>
+<div class="box">
+    <a href="#">
+        <div class="mask"></div>
+        <img src="../../img/09/2.jpg" height="313" width="500" alt="pic"/>
+    </a>
+</div>
+</body>
+</html>
