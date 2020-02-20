@@ -8,6 +8,14 @@ body {
 li {
     list-style: none;
 }
+/*取消表单轮廓线*/
+input {
+    outline: 0;
+}
+/*防止拖拽文本域*/
+textarea{
+    resize: none;
+}
 a {
     text-decoration: none;
 }
@@ -87,6 +95,7 @@ button {
     width: 50px;
     height: 42px;
     background-image: url("../../img/07/btn.png");
+    cursor: pointer;
 }
 
 .user {
