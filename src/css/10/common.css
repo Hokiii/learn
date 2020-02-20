@@ -255,3 +255,12 @@
 .mod_help_app img {
     margin: 7px 0;
 }
+.mod_copyright {
+    text-align: center;
+}
+.mod_copyright_links {
+    margin: 20px 0 10px 0;
+}
+.mod_copyright_info {
+    line-height: 18px;
+}
