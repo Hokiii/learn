@@ -153,6 +153,10 @@
     line-height: 31px;
     margin-left: 1px;
     padding: 0 10px;
+    transition: all .5s;
+}
+.menu_item:hover {
+    padding-left: 20px;
 }
 .menu_item a {
     color: #fff;
@@ -209,19 +213,19 @@
     background: url("../../img/10/img/icons.png") no-repeat;
 }
 .mod_service_zheng {
-    background-position:  -253px -3px;
+    background-position:  -235px 0;
 }
 .mod_service_ji {
-    background-position:  -255px -54px;
+    background-position:  -238px -50px;
 }
 .mod_service_wu {
-    background-position:  -257px -105px;
+    background-position:  -240px -102px;
 }
 .mod_service_te {
-    background-position:  -257px -156px;
+    background-position:  -240px -154px;
 }
 .mod_service_bang {
-    background-position:  -257px -209px;
+    background-position:  -240px -206px;
 }
 .mod_service_tit {
     float: left;
