@@ -1,3 +1,4 @@
+/*列表页样式*/
 .sk {
     position: absolute;
     top: 40px;
@@ -6,7 +7,9 @@
     border-left: 1px solid #b1191a;
     padding: 3px 0 0 15px;
 }
+
 .sk_list li {
+    height: 45px;
     float: left;
     line-height: 45px;
     margin: 0 30px;
@@ -20,6 +23,7 @@
     color: #c81623;
 }
 .sk_con li {
+    height: 45px;
     float: left;
     line-height: 45px;
     margin: 0 20px;
@@ -28,4 +32,110 @@
     font-size: 14px;
     font-weight: 700;
     font-family: 'icomoon';
+}
+/*列表页内容区域*/
+.sk_bd {
+    margin-top: 25px;
+}
+.sk_bd ul {
+    width: 1212px;
+}
+.sk_goods {
+    float: left;
+    position: relative;
+    width: 288px;
+    height: 458px;
+    border: 1px solid transparent;
+    margin: 0 15px 15px 0;
+}
+.sk_goods:hover {
+    border: 1px solid #e12228;
+}
+.sk_goods_title {
+    font-size: 14px;
+    color: #666;
+    font-weight: 400;
+    padding: 10px;
+}
+.sk_goods_price {
+    padding: 0 10px;
+    font-size: 14px;
+    font-weight: 700;
+    color: #e60012;
+}
+.sk_goods_price em {
+    font-size: 20px;
+}
+.sk_goods_price del {
+    color: #a4a4a4;
+}
+.sk_goods_progress {
+    padding: 0 10px;
+    font-size: 14px;
+}
+.bar {
+    display: inline-block;
+    width: 130px;
+    height: 12px;
+    margin: 0 5px;
+    border: 1px solid #b1191a;
+    border-radius: 5px ;
+}
+.bar-in {
+    width: 87%;
+    height: 10px;
+    background-color: #ed282e;
+}
+.sk_goods_progress em {
+    color: #e12228;
+}
+.sk_goods_buy {
+    position: absolute;
+    bottom: 0;
+    display: block;
+    width: 100%;
+    height: 50px;
+    color: #fff;
+    font-size: 20px;
+    line-height: 50px;
+    text-align: center;
+    background-color: #b1191a;
+}
+.page {
+    margin: 40px 0;
+    text-align: center;
+}
+.page_num a {
+    display: inline-block;
+    width: 36px;
+    height: 36px;
+    line-height: 36px;
+    border: 1px solid #ccc;
+    background-color: #f7f7f7;
+}
+.page_num .pn_prev,
+.page_num .pn_next {
+    width: 73px;
+}
+.page_num .dotted,
+.page_num .current {
+    border: 1px solid transparent;
+    background-color: transparent;
+}
+.page_skip input {
+    width: 50px;
+    height: 36px;
+    border: 1px solid #ccc;
+    text-align: center;
+    transition: all .3s;
+}
+.page_skip input:focus {
+    width: 80px;
+    border: 1px solid skyblue;
+}
+.page_skip button {
+    width: 54px;
+    height: 36px;
+    border: 1px solid #ccc;
+    background-color: #f7f7f7;
 }
