@@ -1,0 +1,120 @@
+/*注册页面的css*/
+.w {
+    width: 1200px;
+    margin: 0 auto;
+}
+.header {
+    height: 84px;
+    border-bottom: 2px solid #b1191a;
+}
+.logo {
+    padding-top: 15px;
+}
+.registerarea {
+    height: 520px;
+    border: 1px solid #ccc;
+    margin: 20px 0 25px;
+}
+.registerarea h3 {
+    height: 40px;
+    padding: 0 10px;
+    border-bottom: 1px solid #ccc;
+    background-color: #ececec;
+    color: #333;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 40px;
+}
+.registerarea h3 em {
+    float: right;
+    font-size: 14px;
+}
+.registerarea a {
+    color: #c81623;
+}
+.reg_form {
+    width: 600px;
+    height: 400px;
+    margin: 40px auto;
+}
+.reg_form li {
+    margin-top: 20px;
+}
+.reg_form label {
+    display: inline-block;
+    width: 100px;
+    height: 36px;
+    text-align: right;
+    line-height: 36px;
+    color: #4c4c4c;
+    font-size: 14px;
+}
+.inp{
+    width: 240px;
+    height: 36px;
+    padding: 0 10px;
+    border: 1px solid #ccc;
+}
+.error {
+    color: #df3033;
+    margin-left: 10px;
+}
+.error_ico,
+.success_ico {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin-top: -5px;
+    background-image: url("../../img/10/img/error.png");
+    vertical-align: middle;
+}
+.success_ico {
+    background-image: url("../../img/10/img/success.png");
+}
+.safe {
+    padding-left: 187px;
+    color: #b2b2b2;
+}
+.ruo {
+    background-color: #de1111;
+}
+.zhong {
+    background-color: #40b83f;
+}
+.qiang {
+    background-color: #f79100;
+}
+.safe em {
+    display: inline-block;
+    padding: 0 12px;
+    color: #fff;
+}
+.agree {
+    padding-left: 100px;
+}
+.agree input {
+    vertical-align: middle;
+    margin: 5px;
+}
+.agree a {
+    color: #1ba1e6;
+}
+.over {
+    width: 200px;
+    height: 32px;
+    margin: 20px 0 0 130px;
+    border: none;
+    background-color: #c81623;
+    color: #fff;
+    font-size: 14px;
+}
+.footer {
+    text-align: center;
+    margin-bottom: 40px;
+}
+.links {
+    margin: 20px 0 10px 0;
+}
+.copyright {
+    line-height: 18px;
+}
