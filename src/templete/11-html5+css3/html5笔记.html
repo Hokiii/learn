@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HTML5笔记</title>
+</head>
+<style>
+    .header,
+    .nav,
+    .article,
+    .aside,
+    .footer {
+        background-color: #95cb93;
+        margin-bottom: 10px;
+        text-align: center;
+        padding-top: 20px;
+    }
+    .header,
+    .nav,
+    .footer {
+        width: 510px;
+        height: 40px;
+    }
+    .article,
+    .aside {
+        float: left;
+        height: 110px;
+    }
+    .article {
+        position: relative;
+        width: 300px;
+        margin-right: 10px;
+    }
+    .aside {
+        width: 200px;
+    }
+    .section {
+        position: absolute;
+        left: 50%;
+        margin-left: -100px;
+        bottom: 20px;
+        width: 200px;
+        height: 50px;
+        line-height: 50px;
+        background-color: #ddffe2;
+    }
+
+</style>
+<body>
+<h1>HTML5</h1>
+<h2>1.HTML5语义化标签</h2>
+<hr>
+<p>HTML5新增语义化标签</p>
+<div class="header">header头部标签</div>
+<div class="nav">nav导航标签</div>
+<div style="overflow: hidden">
+    <div class="article">
+        article内容标签
+        <div class="section">section块级标签</div>
+    </div>
+    <div class="aside">aside侧边栏标签</div>
+</div>
+<div class="footer">footer尾部标签</div>
+<p>注意：IE9中需要把这些元素转换成块级元素</p>
+
+<h2>2.HTML5多媒体标签标签</h2>
+<hr>
+<p>多媒体标签包含2个</p>
+<ul>
+    <li>音频audio</li>
+    <li>视频video</li>
+</ul>
+<h3>2.1 音频标签audio</h3>
+<p>语法：</p>
+<img src="../../img/11/audio.png"/><br>
+<audio src="../../media/egoist.mp3" controls="controls"></audio>
+<p>谷歌浏览器禁用了音频的autoplay属性</p>
+<p>因为不同浏览器支持不同音频格式，所以我们为音频准备多个格式</p>
+<img src="../../img/11/audio多文件源.jpg"/>
+
+<h3>2.1 视频标签video</h3>
+<p>语法：</p>
+<img src="../../img/11/video.jpg"/><br>
+<video src="../../media/miao.mp4" controls="controls" width="400px"></video>
+<p>谷歌浏览器禁用了音频的autoplay属性 <strong>解决方案：添加静音播放muted属性muted="muted"</strong></p>
+<p>与音频一样，因为不同浏览器支持不同音频格式，所以我们为音频准备多个格式，写法也与音频一样</p>
+<p>我们经常设置自动播放，不适应controls控件，循环和设置大小属性</p>
+<hr>
+<h2>3.HTML5表单属性</h2>
+<hr>
+<p>HTML5新增input表单，表单属性</p>
+表单 <br>
+<img src="../../img/11/form.PNG" height="300px" width="650px"/></body><br><br>
+表单属性<br>
+<img src="../../img/11/form_para.PNG" height="300px" width="650px"/></html>
