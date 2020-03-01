@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>rem适配布局笔记</title>
+    <link rel="stylesheet" href="../../css/14/my.css">
+    <style>
+        a {
+            text-decoration: none;
+            color: #00a4ff;
+        }
+    </style>
+</head>
+<body>
+<h1> rem适配布局</h1>
+<h2>1. rem基础</h2>
+<hr>
+<p>em，rem都是相对长度单位</p>
+<ul>
+    <li>em是相对于父元素的字体大小来说的</li>
+    <li>rem是相对于html元素的字体大小来说的</li>
+    <li>rem的优点就是可以通过修改html里面的文字大小来改变页面中元素的大小，可实现整体控制</li>
+</ul>
+<h2>2. 媒体查询</h2>
+<hr>
+<p>媒体查询（Media Query）是CSS3新语法，<strong>@media可以针对不同的屏幕尺寸设置不同的样式</strong></p>
+语法：
+<pre>
+    @media mediatype and/not/only (media feature) {
+        CSS Code;
+    }
+    - 用@media开头注意@符号
+    - mediatype 媒体类型：all所有类型/print打印设备/screen电脑屏幕，平板电脑，智能手机
+    - 关键字将媒体类型或多个媒体特性连接在一起作为查询的条件：and“且”将多个媒体特性连在一起
+                                                              not“非”排除某个媒体类型，可以省略
+                                                              only指定某个特定的媒体类型，可以省略
+    - media feature媒体特性必须有小括号包含：width定义输出设备中页面可见区域的宽度
+                                             min-width定义输出设备中页面最小可见区域的宽度
+                                             max-width定义输出设备中页面最大可见区域的宽度
+</pre>
+<p>媒体查询还可以用于引入资源,即根据不同的屏幕尺寸调用不同的CSS文件</p>
+语法 <br>
+<img src="../../img/14/img/media.jpg" height="34" width="863" alt=""/>
+<h2>3. Less基础</h2>
+<hr>
+<p>Less是一门CSS预处理语言，它扩展了CSS的动态特性，常见的CSS预处理器有：Sass，Less，Stylus，Less中文网址：<a href="http://lesscss.cn">http://lesscss.cn</a></p>
+<h3>3.1 Less嵌套</h3>
+<p>less中，子元素的样式直接写到父元素中</p>
+例
+<pre>
+    css: header a:hover {}             less: header{ a{ &:hover { }} }
+</pre>
+<strong>如果有伪类，交集选择器，伪元素选择器，内层选择器的前面需要加“&”符号</strong>
+<h3>3.2 less运算</h3>
+<ul>
+    <li>运算符的左右两侧必须有一个空格</li>
+    <li>如果两个数参与运算，只有一个数有单位，则最后的结果就以这个单位为准</li>
+    <li>如果两个数参与运算，两个数都有单位，且单位不一样，最后的单位以第一个为准</li>
+</ul>
+
+<h2>4. rem适配方案</h2>
+<hr>
+<ul>
+    <li>让一些不能等比自适应的元素达到当设备尺寸发生改变时，等比例适配当前设备</li>
+    <li>使用媒体查询根据不同设备按比例设置HTML的字体大小，然后页面元素使用rem做尺寸单位，当HTML字体大小变化，元素尺寸也会发生变化，从而达到等比例缩放的适配</li>
+</ul>
+<h3>rem适配方案技术使用</h3>
+<strong>技术方案1：</strong>less + 媒体查询 + rem <br>
+<strong>技术方案1(推荐)：</strong>flexible.js + rem <br>
+步骤：
+<ul>
+    <li>先选一套标准尺寸，以750px为准</li>
+    <li>用屏幕尺寸/划分的份数=html里面的文字大小，但不同屏幕下得到的文字大小时不一样的</li>
+    <li>最后不同屏幕尺寸下页面元素的rem值=页面元素在标准尺寸下的像素值/html里面的字体大小</li>
+</ul>
+<h2>5. 苏宁首页案例制作</h2>
+<hr>
+<strong>技术方案1：</strong>less + 媒体查询 + rem ：index1.html<br>
+<strong>技术方案1(推荐)：</strong>flexible.js + rem ：index2.html<br>
+</body>
+</html>
