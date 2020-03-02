@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>数据类型</title>
+    <script>
+        // for (var i = 0; i < 10; i++) {
+        //   var str = '';
+        //   for (var j = i; j < 10;j++){
+        //     str += '☾';
+        //   }
+        //   console.log(str + '\n');
+        // }
+        var a = null;
+        var b;
+        console.log(a+b);
+    </script>
+</head>
+<body>
+<h1>Javascript基础</h1>
+<h2>1. 变量</h2>
+<hr>
+<p>变量是一个存放数据的容器，是内存中的一块空间，使用变量的时候一定要声明变量（var）然后赋值，声明变量的本质是去内存申请空间
+    <br>声明变量并赋值称为变量的初始化 <br>变量命名 -- 驼峰命名法</p>
+
+<h2>2. 数据类型</h2>
+<hr>
+<p><strong>变量在赋值前是不确定属于哪种数据类型的</strong>，只有在程序运行中，<strong>根据等号右边的值来确定</strong>。
+    <br><strong>注意：</strong>同时也意味着相同的变量数据类型会发生改变。</p>
+<h3>2.1 简单数据类型</h3>
+<ul>
+    <li>Number：数字型，包含整型和浮点型，默认值为0</li>
+    <li>Boolean：布尔型，true，false，默认值为false。<br><strong>注意：布尔型和数字型相加时（或进行数字运算时），true的值为1，false为0</strong></li>
+    <li>String：字符串类型，都带引号，默认值为空字符串"". <br><strong>字符串和任意数据类型相加都会变为字符串</strong></li>
+    <li>Undefined：var a;声明了一个变量但未赋值，此时a=undefined，默认值为undefined。<br><strong>undefined和数字,布尔型或null相加最后结果是NaN</strong></li>
+    <li>Null：var a = null;声明了变量a为空值，默认值为null。<br><strong>null和数字或布尔型相加返回数字，和undefined相加返回NaN</strong><br><strong>typeof(null)返回结果是Object</strong></li>
+</ul>
+<h3>2.3 数据类型转换</h3>
+<ul>
+    <li><strong>转换为字符串：</strong>toString(),String()强制转换，加号拼接字符串</li>
+    <li><strong>转换为数字型：</strong>parseInt(string)将字符型转换为整型，parseFloat(string)将字符型转换为浮点型，Number()强制转换，（- / *）算数运算隐式转换</li>
+    <li><strong>转换为布尔型：</strong></li>
+</ul>
+</body>
+</html>

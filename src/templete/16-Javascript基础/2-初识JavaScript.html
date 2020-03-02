@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>初识Javascript</title>
+    <style>
+        dl dt {
+            font-size: 20px;
+        }
+        pre {
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+<h1>初识Javascript</h1>
+
+<h2>1. Javascript是什么</h2>
+<hr>
+<p>Javascript是一种运行在客户端的脚本语言,不需要编译,运行过程由js解释器(js引擎)逐行解释并执行,现在也可以给予Node.js技术进行服务器端编程.</p>
+
+<h2>2.浏览器执行Javascript的原理</h2>
+<hr>
+<p>浏览器分为两部分:渲染引擎和JS引擎</p>
+<ul>
+    <li><strong>渲染引擎:</strong>解析HTML和CSS,俗称内核,如blink,webkit</li>
+    <li><strong>JS引擎:</strong>JS解释器,浏览器本身并不会执行JS代码,而是通过内置的JS引擎来执行JS代码.
+        JS引擎执行代码时逐行解释每一句源码(转换成机器语言)然后由计算机执行,所以js语言归为脚本语言,会逐行解释运行.
+    </li>
+</ul>
+<h2>3. Javascript的组成部分</h2>
+<hr>
+<dl>
+    <dt>JavaScript</dt>
+    <dd><strong>ECMAScript :</strong> Javascript语法(基础)</dd>
+    <dd><strong>DOM :</strong> 页面文档对象模型(API)</dd>
+    <dd><strong>BOM :</strong> 浏览器对象模型(API)</dd>
+</dl>
+<h2>4. Javascript的三个输入输出语句</h2>
+<hr>
+<p>三种书写位置:行内,内嵌,外部.</p>
+三个输入输出语句
+<pre>
+        方法                            说明                        归属
+      alert(msg)                  浏览器弹出警示框                 浏览器
+    console.log(msg)           浏览器控制台打印输出信息            浏览器
+      prompt(info)           浏览器弹出输入框,用户可以输入         浏览器
+</pre>
+</body>
+</html>
