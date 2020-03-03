@@ -2,19 +2,74 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>数据类型</title>
+    <title>Javascript基础</title>
     <script>
-        // for (var i = 0; i < 10; i++) {
-        //   var str = '';
-        //   for (var j = i; j < 10;j++){
-        //     str += '☾';
-        //   }
-        //   console.log(str + '\n');
+        //1.利用函数冒泡排序
+        function sort(arr) {
+          for (var i = 0; i < arr.length - 1; i++) {
+            for (var j = 0; j < arr.length - i - 1; j++){
+              if (arr[j] > arr[j+1]) {
+                var temp = arr[j];
+                arr[j] = arr[j+1];
+                arr[j+1] = temp;
+              }
+            }
+          }
+          return arr;
+        }
+        // var arr1 = sort([1,9,3,7,22]);
+        // console.log(arr1);
+
+        //利用函数翻转任意数组
+        function reverse(arr) {
+            var newArr = [];
+            for (var i = arr.length - 1; i >= 0; i--) {
+                newArr[newArr.length] = arr[i];
+			}
+            return newArr;
+        }
+        // var arr1 = reverse([1,3,4,6,9]);
+        // console.log(arr1);
+        // var arr2 = reverse(['sun', 'hui', 'li', 'yu', 'he']);
+        // console.log(arr2);
+
+		//函数预解析
+        // 1.
+        // console.log(num);//报错，num is not defined
+        // 2.
+        // console.log(num);//undefined
+        // var num = 10;
+        // 3.
+        // fn();
+        // function fn() {
+        // 	console.log(11);//11
         // }
-        var a = null;
-        var b;
-        console.log(a+b);
+        // 4.
+        // fn();//报错，fn is not a function
+        // var fn = function () {
+        // 	console.log(22);
+        // }
+
+		//倒计时
+		function countDown(time) {
+			var nowTime = +new Date();//返回的是当前时间的总毫秒数
+			var inputTime = +new Date(time);//返回的是用户输入时间的总毫秒数
+			var times = (inputTime - nowTime) / 1000;//times=剩余时间的总的秒数
+			var d = parseInt(times / 60 / 60 / 24);//天
+			d = d < 10 ? '0' + d : d; //未满10补0
+            var h = parseInt(times / 60 / 60 % 24);//时
+            h = h < 10 ? '0' + h : h; //未满10补0
+            var m = parseInt(times / 60 / 60);//分
+            m = m < 10 ? '0' + m : m; //未满10补0
+            var s = parseInt(times / 60);//秒
+            s = s < 10 ? '0' + s : s; //未满10补0
+        }
     </script>
+    <style>
+        pre {
+            font-size: 18px;
+        }
+    </style>
 </head>
 <body>
 <h1>Javascript基础</h1>
@@ -38,8 +93,510 @@
 <h3>2.3 数据类型转换</h3>
 <ul>
     <li><strong>转换为字符串：</strong>toString(),String()强制转换，加号拼接字符串</li>
-    <li><strong>转换为数字型：</strong>parseInt(string)将字符型转换为整型，parseFloat(string)将字符型转换为浮点型，Number()强制转换，（- / *）算数运算隐式转换</li>
-    <li><strong>转换为布尔型：</strong></li>
+    <li><strong>转换为数字型：</strong>parseInt(string)将字符型转换为整型，parseFloat(string)将字符型转换为浮点型，Number()强制转换，（- / *）算数运算隐式转换
+    <strong>parseInt(120px)结果为120自动去掉单位，但parseInt(rem120px)结果为NaN，同理parseFloat也是</strong></li>
+    <li><strong>转换为布尔型：Boolean()函数，如Boolean('str')返回true. <strong>代表空，否定的值会被转换为false，如：''空字符串，0，NaN，努力了，undefined</strong></strong></li>
 </ul>
+
+<h2>3. 解释型语言和编译型语言</h2>
+<hr>
+<ul>
+    <li>编译型语言如C语言是先通过编译器进行编译转换成中间代码然后再通过解释器进行解释成机器语言进行执行，是先编译再运行</li>
+    <li>解释型语言如Javascript时直接由解释器即js引擎解释后运行，是运行期间才编译</li>
+</ul>
+<img src="../../img/16/compileandexplain.png" height="300px" width="500px" alt=""/>
+
+<h2>4. 运算符</h2>
+<hr>
+<h3>4.1 算数运算符</h3>
+<ul>
+    <li>+ ：加</li>
+    <li>- ：减</li>
+    <li>* ：乘</li>
+    <li>/ ：除</li>
+    <li>% ：取余</li>
+</ul>
+<strong>注意：</strong>浮点数在算数运算里会有问题
+<pre>
+    console.log(0.1 + 0.2);结果不是0.3，而是0.30000000000000000004
+    console.log(0.7 * 100);结果不是7.0，而是7.00000000000000000001
+    不能拿着浮点数直接进行比较
+    var num = 0.1 + 0.2;
+    console.log(num == 0.3);//false
+</pre>
+
+<h3>4.2 递增和递减运算符</h3>
+<ul>
+    <li>前置递增/递减：++i ：先自加/减，后返回值</li>
+    <li>后置递增/递减：i++ ：先返回原值，后自加/减</li>
+</ul>
+<pre>
+    var e = 10;
+    var f = e++ + ++e;
+    console.log(f);//22
+    1.e++ = 10 ,e = 11;
+    2.++2 = 12;
+    3.f = 22
+</pre>
+
+<h3>4.3 比较运算符</h3>
+<ul>
+    <li> <  小于</li>
+    <li> >  大于</li>
+    <li> >= 大于等于</li>
+    <li> <= 小于等于</li>
+    <li> == 判等号（会转型）即如果是数字的字符串会默认转换成数字型</li>
+    <li> != 不等于</li>
+    <li> === !== 全等 要求值和数据类型都相同 </li>
+</ul>
+
+<h3>4.4 逻辑运算符</h3>
+<ul>
+    <li>&& 逻辑与，一假则假</li>
+    <li>|| 逻辑或，一真则真</li>
+    <li>！ 逻辑非</li>
+</ul>
+<h4>4.4.1 短路运算</h4>
+<strong>逻辑与</strong>
+<pre>
+    语法：表达式1 && 表达式2
+    - 如果第一个表达式的值为真，返回表达式2
+    - 如果第一个表达式的值为假，返回表达式1 如："",0,null,undefined,NaN
+</pre>
+<strong>逻辑或</strong>
+<pre>
+    语法：表达式1 && 表达式2
+    - 如果第一个表达式的值为真，返回表达式1
+    - 如果第一个表达式的值为假，返回表达式2
+     如：var num = 0;
+         console.log(123 || num++);//123
+         console.log(num);//0
+</pre>
+
+<h3>4.5 赋值运算符</h3>
+<ul>
+    <li>= 直接赋值</li>
+    <li>+=，-= 加/减一个数后再赋值</li>
+    <li>*=，/=，%= 乘/除/取余一个数后再赋值</li>
+</ul>
+
+<h3>4.6 运算符优先级</h3>
+<p>小括号() > 一元运算符（++/--/!） > 算术运算符（先* / 后 + -） > 相等运算符（== != === !==） > 逻辑运算符（先&&后||） > 赋值运算符（=） > 逗号运算符（，）</p>
+<p>一元运算符里的逻辑非优先级很高，逻辑与比逻辑非优先级高</p>
+
+<h2>5. Javascript流程控制</h2>
+<hr>
+<p>流程控制主要有三种结构：顺序结构，分支结构和循环结构</p>
+<h3>5.1 分支</h3>
+<pre>
+    if语句                                           三元运算符                          switch语句
+    if (条件表达式1) {                    条件表达式 ? 表达式1 : 表达式2;             switch(表达式) {
+        条件成立执行的代码1;            如果条件表达式的值为真，返回表达1的值             case value1 :
+    } else if {                         如果条件表达式的值为假，返回表达2的值                  执行语句1;
+        条件成立执行的代码2;                                                                   break;
+    } else if {                                                                           case value2 :
+        条件成立执行的代码3;                                                                   执行语句2;
+    } else {                                                                                   break;
+        否则执行的代码;                                                                     ......
+    }                                                                                     default :
+                                                                                               最后执行的语句;
+                                                                                       }
+</pre>
+<strong>注意：在switch语句中</strong>
+<ul>
+    <li>在开发中表达式我们经常写成变量</li>
+    <li>变量的值和case里的值相匹配时是<strong>全等</strong>，必须是值和数据类型都相等才行</li>
+    <li>break 如果当前的case里没有break，则不会退出switch，而是继续执行下一个case</li>
+</ul>
+<h3>5.2 循环</h3>
+<pre>
+    for循环                                                        while循环                              do...while循环
+    for (初始化计数器; 循环条件; 计数器后置操作) {                 while(循环条件) {                      do {
+        循环语句;                                                      循环语句;                              循环语句;
+    }                                                              }                                       } while(循环条件)
+                                                                                                            <strong>do..while循环至少执行一次循环语句</strong>
+</pre>
+
+<h2>6. 函数</h2>
+<hr>
+<h3>6.1 arguments的使用</h3>
+<p>当我们不确定有多少个参数传递的时候，可以用arguments来获取。在JS中，arguments实际上是当前函数的一个内置对象。
+    所有函数都内置了一个arguments对象来存储传递的所有实参。</p>
+<p>arguments是一个伪数组，我们可以按照数组的方式遍历arguments，但它并不是真正意义上的数组。它具有数组的length属性，
+    按照索引的方式进行存储，但没有真正数组的一些方法，如push()，pop()等</p>
+<pre>
+    //利用函数冒泡排序sort排序
+    function sort(arr) {
+        for (var i = 0; i < arr.length - 1; i++) {
+            for (var j = 0; j < arr.length - i - 1; j++){
+                if (arr[j] > arr[j+1]) {
+                    var temp = arr[j];
+                    arr[j] = arr[j+1];
+                    arr[j+1] = temp;
+                }
+            }
+        }
+        return arr;
+    }
+
+	//利用函数翻转任意数组
+    function reverse(arr) {
+        var newArr = [];
+        for (var i = arr.length - 1; i >= 0; i--) {
+            newArr[newArr.length] = arr[i];
+		}
+        return newArr;
+    }
+</pre>
+
+<h3>6.2 函数的两种声明方式</h3>
+<p>（1）利用函数关键字自定义函数（命名函数）</p>
+<pre>
+	function fn() {
+
+	}
+	fn();
+</pre>
+<p>（2）函数表达式（匿名函数）</p>
+<pre>
+	var fn = function() {
+
+	}
+	fn();
+	a.fn是变量名，不是函数名
+	b.函数表达式声明方式和声明变量相似，只不过变量里面存的是值，函数表达式里面存的是函数
+	c.函数表达式也可以传递参数
+</pre>
+<br>
+
+<h2>7. 作用域</h2>
+<hr>
+<p>JS作用域：代码名字（变量）在某个范围内起作用和效果，目的是为了提高程序的可靠性，更重要的是为了减少命名冲突</p>
+<p>在es6之前，JS的作用域主要分为全局作用域和局部作用域</p>
+ - 全局作用域：整个script标签，或是一个单独的js文件 <br>
+ - 局部作用域：在函数内部就是局部作用域，这个代码的名字只在函数内部起效果和作用
+
+<p>变量的作用域：根据作用域的不同将变量分为全局变量和局部变量</p>
+ - 全局变量：在全局作用域下的变量，在全局下都可以使用，只有在浏览器关闭时才会被销毁，因此比较占内存。
+<br>&nbsp;&nbsp;&nbsp;&nbsp;<strong>注意：</strong>如果在函数内部没有声明直接赋值的变量也属于全局变量
+<br>&nbsp;&nbsp;&nbsp;&nbsp;如在函数内部有var a = b = c = 9;那么相当于var a = 9; b = 9; c = 9;其中a是局部变量，b,c就是全局变量。<br>
+ - 局部变量：在局部作用域下的变量，在函数内部的变量就是局部变量，函数的形参实际上也是局部变量，只在函数内部使用，当所在的代码块被执行时才会被初始化，当代码块运行结束后就会被销毁，因此更节省空间。
+
+<h2>8. 预解析</h2>
+<pre>
+	1.
+	console.log(num);//报错，num is not defined
+	2.
+	console.log(num);//undefined
+	var num = 10;
+	3.
+	fn();
+	function fn() {
+	console.log(11);//11
+	}
+	4.
+	fn();//报错，fn is not a function
+	var fn = function () {
+	console.log(22);
+	}
+</pre>
+<p>JS代码是由浏览器中的JS解释器来执行的</p>
+ - JS解释器在运行JS代码时分两步：预解析和代码执行 <br>
+&nbsp;&nbsp;&nbsp;&nbsp;a.预解析 JS引擎会把JS里面所有的var和function提升到当前作用域的最前面 <br>
+&nbsp;&nbsp;&nbsp;&nbsp;b.代码执行 按照代码的书写顺序从上往下执行 <br>
+ - 预解析分为变量预解析（变量提升）和函数预解析（函数提升） <br>
+&nbsp;&nbsp;&nbsp;&nbsp;a.变量提升 就是把所有的变量声明提升到当前作用域的最前面，不提升赋值操作 <br>
+&nbsp;&nbsp;&nbsp;&nbsp;b.函数提升 就是把所有的函数声明提升到当前作用域的最前面，不调用函数
+
+<pre>
+	console.log(num);//undefined
+	var num = 10;
+	相当于执行了以下代码
+	var num;
+	console.log(num);
+	num = 10;
+
+	fn();//报错，fn is not a function
+	var fn = function () {
+		console.log(22);
+	}
+	相当于执行了以下代码
+	var fn;
+	fn();
+	fn = function () {
+		console.log(22);
+	}
+</pre>
+
+<h2>9. Javascript对象</h2>
+<hr>
+<p>对象是一个具体的事物，是一组相关属性和方法的集合，属性是事物的特征，方法是事物的行为</p>
+<p>在JS中有三种方式创建对象：①利用字面量创建对象{}；②利用new Object()创建对象；③利用构造函数创建对象</p>
+
+①利用字面量创建对象{}；
+<pre>
+var obj = {}; //创建了一个空对象
+var obj = {
+	uname: '张三'，
+	age: 18;
+	sayHi: function() {
+		console.log('Hi~');
+	}
+}
+里面的属性或方法采用键值对的形式，用逗号隔开，方法冒号后面跟的是一个匿名函数
+</pre>
+②利用new Object()创建对象；
+<pre>
+var obj = new Object(); //创建了一个空对象
+obj.uname = '张三';
+obj.age = 18;
+obj.sayHi = function() {
+	console.log('Hi~');
+};
+利用等号赋值的方法添加对象的属性和方法，每个属性和方法之间用分号结束
+</pre>
+③利用构造函数创建对象
+<pre>
+function Person(uname, age) {
+	this.uname = uname;
+	this.age = age;
+	this.sayHi = function() {
+		console.log('Hi~');
+	};
+}
+var obj = new Person('张三', 18);
+构造函数名首字母要大写，不需要return就可以返回结果，调用构造函数必须使用new，属性和方法前必须添加this
+</pre>
+<p>对象的调用:①对象.属性名；②对象['属性名']；③对象.方法名；</p>
+<p>new关键字的执行过程</p>
+ - 在内存中创建一个新的空对象；<br>
+ - 让this指向这个新的对象；<br>
+ - 执行构造函数里的代码，给这个新对象添加属性和方法；<br>
+ - 返回这个新对象；<br>
+<p>遍历对象：for (变量 in对象)</p>
+<pre>
+for (var k in obj) {
+	console.log(k); //k变量输出得到的是属性名；
+	console.log(obj[k]); //obj[k]得到的是属性值；
+}
+</pre>
+
+<h2>10. 内置对象</h2>
+<hr>
+<h3>10.1 Math对象</h3>
+<p>Math对象不是构造函数，它具有数学常数和函数的属性和方法</p>
+<ul>
+	<li>Math.PI 圆周率</li>
+	<li>Math.floor() 向下取整</li>
+	<li>Math.ceil() 向上取整</li>
+	<li>Math.round() 四舍五入</li>
+	<li>Math.abs() 绝对值</li>
+	<li>Math.max()/Math.min() 最大值/最小值</li>
+	<li>Math.random() 0-1之间的浮点伪随机数</li>
+</ul>
+<pre>
+	得到一个两数之间的随机数
+	function getRandomArbitrary(min, max) {
+  		return Math.random() * (max - min) + min;
+	}
+
+	得到一个两数之间的随机整数
+	function getRandomInt(min, max) {
+  		min = Math.ceil(min);
+  		max = Math.floor(max);
+  		return Math.floor(Math.random() * (max - min)) + min; //不含最大值，含最小值
+	}
+
+	得到一个两数之间的随机整数，包括两个数在内
+	function getRandomIntInclusive(min, max) {
+  		min = Math.ceil(min);
+  		max = Math.floor(max);
+  		return Math.floor(Math.random() * (max - min + 1)) + min; //含最大值，含最小值
+	}
+</pre>
+
+<h3>10.2 Date对象</h3>
+<pre>
+	var date = new Date();
+	console.log(date.getFullYear());//返回当前日期的年
+	console.log(date.getMonth());//返回当前日期的月 注意返回的月份小1个月，需要+1
+	console.log(date.getDate());//返回当前日期的日
+	console.log(date.getDay());//返回当前日期是星期几 注意返回的是数字，但周日返回的是0
+	console.log(date.getHours());//返回当前日期的时
+	console.log(date.getMinutes());//返回当前日期的分
+	console.log(date.getSeconds());//返回当前日期的秒
+
+	//获得总的毫秒数
+	1.通过valueOf() getTime()
+	var date =new Date();
+	console.log(valueOf(date));
+	console.log(getTime(date));
+	2.简单的写法（最常用）
+	var date = +new Date();
+	console.log(date);//返回的就是总的毫秒数
+	3.H5新增的
+	console.log(Date.now());
+</pre>
+<p>案例：倒计时</p>
+<pre>
+	//倒计时
+	function countDown(time) {
+		var nowTime = +new Date();//返回的是当前时间的总毫秒数
+		var inputTime = +new Date(time);//返回的是用户输入时间的总毫秒数
+		var times = (inputTime - nowTime) / 1000;//times=剩余时间的总的秒数
+		var d = parseInt(times / 60 / 60 / 24);//天
+		d = d < 10 ? '0' + d : d; //未满10补0
+        	var h = parseInt(times / 60 / 60 % 24);//时
+        	h = h < 10 ? '0' + h : h; //未满10补0
+        	var m = parseInt(times / 60 / 60);//分
+        	m = m < 10 ? '0' + m : m; //未满10补0
+        	var s = parseInt(times / 60);//秒
+        	s = s < 10 ? '0' + s : s; //未满10补0
+    	}
+</pre>
+
+<h3>10.3 数组对象</h3>
+<p>创建数组的两种方式：①字面量方式；②new Array();</p>
+<p>检测是否为数组：①arr instanceof Array;②Array.isArray(arr) H5新增的；</p>
+<h4>10.3.1 添加/删除数组元素</h4>
+<pre>
+	(1)添加元素
+	   arr.push(),在数组末尾追加一个或多个新元素，参数直接写要追加的数组元素，push完毕后，返回结果时新数组的长度，原数组发生改变。
+	   arr.unshift(),在数组开头添加一个或多个新元素，参数直接写要添加的数组元素，unshift完毕后，返回结果时新数组的长度，原数组发生改变。
+	(2)删除元素
+	   arr.pop(),删除数组的最后一个元素，一次只能删除一个元素，pop()没有参数，pop完毕后，返回的是那个删除的元素，原数组发生改变
+	   arr.shift(),删除数组的第一个元素，一次只能删除一个元素，shift()没有参数，shift完毕后，返回的是那个删除的元素，原数组发生改变
+</pre>
+案例1：有一个包含工资的数组[1500,1200,2000,2100,1800]，要求把数组中超过2000的删除，其余的放到新数组中
+<pre>
+	var arr = [1500,1200,2000,2100,1800];
+	var newArr = [];
+	for (var i = 0; i < arr.length; i++) {
+		//newArray[newArr.length] = arr[i];
+		newArr.push[arr[i]];
+	}
+	console.log(newArr);
+</pre>
+案例2：翻转数组
+<pre>
+	var arr = ['pink', 'red', 'blue'];
+	arr.reverse();
+	console.log(arr);
+</pre>
+案例3：数组排序（冒泡）
+<pre>
+	var arr = [13, 4, 77, 1, 7];
+	arr.sort(function(a, b) {
+		//return a - b;升序
+		return b - a;//降序
+	});
+	console.log(arr);
+</pre>
+<h4>10.3.2 数组索引方法</h4>
+<ul>
+	<li>indexOf() 在数组中查找给定元素的第一个索引，如果存在返回索引号，如果不存在，则返回-1</li>
+	<li>lastIndexOf() 在数组中查找给定元素的最后一个索引，如果存在返回索引号，如果不存在，则返回-1</li>
+</ul>
+案例1:数组去重['c','a','z','a','x','a','c','b']要求去除数组中重复的元素
+<pre>
+function unique(arr) {
+	var newArr = [];
+	for (var i = 0; i < arr.length; i++){
+		newArr.push(arr[i]);
+	}
+}
+</pre>
+<h4>10.3.3 数组转换为字符串</h4>
+<ul>
+	<li>toString() 把数组转换为字符串，逗号分隔每一项，结果返回一个字符串</li>
+	<li>join('分隔符') 把数组转换为字符串，用给定的分隔符分隔每一项，结果返回一个字符串</li>
+</ul>
+
+<h2>11. 字符串对象</h2>
+<hr>
+<p>为了方便基本数据类型，JS提供了三个特殊的引用类型：Number，String，Boolean。
+	基本包装类型就是把简单数据类型包装成复杂数据类型，这样基本数据类型就有了属性和方法</p>
+<p><Strong>字符串的所有方法都不会修改字符串本身，操作完成会返回一个新的字符串</Strong></p>
+
+<h3>11.1 根据字符返回索引号</h3>
+<ul>
+	<li>indexOf('要查找的字符', 开始的位置) 返回指定内容在原字符串中的位置，如果存在返回索引号，如果不存在，则返回-1，开始的位置是index索引号</li>
+	<li>lastIndexOf() 从后往前找，只找第一个匹配的</li>
+</ul>
+案例1：查找字符串"abcoefoxyozzopp"中所有o出现的位置以及次数
+<pre>
+	算法：先查找出第一个o的位置，用一个index接收返回值，然后只要indexOf('o')的值不等于-1，就继续往后查找indexOf('o', index+1);
+	var str = "abcoefoxyozzopp";
+	var index = str.indexOf('o');
+	var num = 0;
+	while(index !== -1){
+		num++;
+		console.log(index);
+		index = indexOf('o', index + 1);
+	}
+	console.log("o出现的次数是：" + num);
+</pre>
+
+<h3>11.2 根据位置返回字符</h3>
+<ul>
+	<li>str.charAt(index) 返回指定位置的字符（index字符的索引号)</li>
+	<li>str.charCode(index) 返回指定位置的字符的ASCII码（index字符的索引号)，目的，判断用户按下了哪个键</li>
+	<li>str.str[index] 获取指定位置的字符（index字符的索引号)，新增的</li>
+</ul>
+案例1：判断一个字符串"abcoefoxyozzopp"中出现次数最多的字符，并统计起次数
+<pre>
+	算法：利用charAt()遍历这个字符串，把每个字符都存储给对象，如果对象没有该属性，就存为1，如果存在了就+1，遍历对象，得到最大值和该字符
+	var str = "abcoefoxyozzopp";
+	var obj = {};
+	for (var i = 0; i < str.length; i++) {
+		var chars = str.charAt(i);//chars是字符串的每个字符
+		if (obj[chars]){ //obj[chars]得到的是属性值
+			obj[]chars++;
+		}else {
+		obj[chars] = 1
+	}
+	var max = 1;
+	var ch = ''
+	for (var k in obj) {
+		if(obj[k] > max){
+		max = obj[k];
+		ch = k;
+		}
+	}
+	consolo.log(max);
+	consolo.log('最多的字符是' + ch);
+</pre>
+
+<h3>11.3 字符串操作方法</h3>
+<ul>
+	<li>str.concat('str1', 'str2'); 拼接字符串，不影响原字符串</li>
+	<li>str.substr('截取的位置', '截取几个字符'); 第一个是索引号，从第几个开始，第二个是截取几个字符</li>
+	<li>str.replace('被替换的字符', '替换为的字符'); 它只会替换第一个字符</li>
+	<li>str.split('分隔符'); 将字符转换为数组，已分隔符为标准隔开</li>
+	<li>str.toUpperCase(); 将字符串转换为大写</li>
+	<li>str.toLowerCase(); 将字符串转换为小写</li>
+</ul>
+案例1：有一个字符串"abcoefoxyozzopp"，要求将里面的o都替换成*
+<pre>
+	var str = "abcoefoxyozzopp";
+	while(str.indexOf('o') !== -1) {
+		str = str.replace('o', '*');
+	}
+	console.log(str);
+</pre>
+
+<h2>12. 简单数据类型和复杂数据类型</h2>
+<hr>
+<ul>
+	<li>简单类型又叫值类型/基本数据类型，存储变量时存储的是值本身：string，number，boolean，undefined，null</li>
+	<li>复杂类型又叫引用类型，存储变量时存储的是地址，通过new关键字创建对象：Object，Array，Date</li>
+</ul>
+<h3>堆和栈</h3>
+<ul>
+	<li>栈：由OS自动分配释放存放函数的参数值，局部变量的值等，简单数据类型和复杂数据类型的地址存放到栈里</li>
+	<li>堆：存储复杂数据类型，一般由程序员分配释放，若程序员不释放，由垃圾回收机制回收，复杂数据类型的数据存放到堆里面</li>
+</ul>
+
+<img src="../../img/16/stack.png" height="200px" width="400px" alt=""/>
 </body>
 </html>
