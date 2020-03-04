@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>动态生成表格</title>
+	<style>
+		table {
+			width: 500px;
+			margin: 100px auto;
+			border-collapse: collapse;
+			text-align: center;
+		}
+
+		td,
+		th {
+			border: 1px solid #333;
+		}
+
+		thead tr {
+			height: 40px;
+			background-color: #ccc;
+		}
+		a {
+			text-decoration: none;
+		}
+		/*a:hover {*/
+		/*	text-decoration: none;*/
+		/*}*/
+	</style>
+</head>
+<body>
+<table cellspacing="0">
+	<thead>
+	<tr>
+		<th>姓名</th>
+		<th>科目</th>
+		<th>成绩</th>
+		<th>操作</th>
+	</tr>
+	</thead>
+	<tbody>
+
+	</tbody>
+</table>
+
+<script>
+    // 1.先准备好学生的数据
+    var datas = [{
+        name: 'Alice',
+        subject: 'JavaScript',
+        score: 100
+    }, {
+        name: 'Bob',
+        subject: 'JavaScript',
+        score: 98
+    }, {
+        name: 'Cindy',
+        subject: 'JavaScript',
+        score: 99
+    }, {
+        name: 'David',
+        subject: 'JavaScript',
+        score: 88
+    }];
+    //2.往tbody里创建行，有几个人就创建几行，datas.length
+	var tbody = document.querySelector('tbody');//获取元素tbody
+	//有几个人创建几行，循环创建行
+	for (var i = 0; i < datas.length; i++){//循环，有几个人循环几次
+	    var tr = document.createElement('tr'); //创建行
+		//行里面创建单元格，有几个属性创建几个单元格
+		for(var k in datas[i]){ //循环创建单元格,k in datas[i] datas[i]里的属性
+		    var td = document.createElement('td');//创建单元格
+			td.innerHTML = datas[i][k];//赋值
+			tr.appendChild(td);//将单元格添加到行
+		}
+        //3.创建有删除两个字的单元格
+        var td = document.createElement('td');
+        td.innerHTML = '<a href="javascript:;">删除</a>';
+        tr.appendChild(td);
+        tbody.appendChild(tr);//将行添加到tbody
+	}
+	//4.给删除链接添加点击事件
+	//获取元素
+	var as = document.querySelectorAll('a');
+	//循环添加点击事件 注册事件 处理函数
+	for(var i = 0; i < as.length; i++){
+	    as[i].onclick = function () {
+	        //移除的是a链接的父亲td单元格的父亲tr行
+			tbody.removeChild(this.parentNode.parentNode);
+        }
+	}
+
+</script>
+</body>
+</html>

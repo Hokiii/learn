@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>WebAPIs笔记 - DOM</title>
+	<style>
+		.red {
+			color: red;
+		}
+		pre {
+			font-size: 18px;
+		}
+	</style>
+</head>
+<body>
+<h1>WebAPIs</h1>
+
+<h2>1. Web APIs简介</h2>
+<hr>
+<h3>1.1 JS的组成</h3>
+<ul>
+	<li>ECMAScript JS语法----JS基础</li>
+	<li>DOM 页面文档对象模型----Web APIs</li>
+	<li>BOM 浏览器对象模型----Web APIs</li>
+</ul>
+<h3>1.2 API和Web API</h3>
+<p>API（Application Programming Interface，应用程序编程接口），API是给程序员提供的一种工具，以便能更轻松的实现想要完成的功能。</p>
+<p>Web API是浏览器提供的一台操作浏览器功能和页面元素的API（BOM和DOM），主要针对浏览器做交互效果，一般都有输入输出，很多都是方法</p>
+
+<h2>2. DOM</h2>
+<hr>
+<ul>
+	<li>DOM简介</li>
+	<li>获取元素</li>
+	<li>事件基础</li>
+	<li>操作元素</li>
+	<li>节点操作</li>
+</ul>
+<h3>2.1 DOM简介</h3>
+<p>DOM（Document Object Model，文档对象模型），是W3C组织推荐的处理可扩展标记语言的标准编程接口</p>
+<strong>DOM树</strong>
+<img src="../../img/17/DOMtree.png" height="350px" width="500px" alt=""/>
+<ul>
+	<li>文档：一个页面就是一个文档，DOM中用document表示</li>
+	<li>元素：页面中的所有标签都是元素，DOM中用element表示</li>
+	<li>节点：网页中的所有内容都是节点（标签，属性，文本，注释等），DOM中用node表示</li>
+</ul>
+<p>W3C定义了一系列的DOM接口，通过这些接口可以改变网页的内容，结构，和样式</p>
+<ul>
+	<li>对于JS，为了能使JS操作HTML，JS就有了一套自己的编程接口</li>
+	<li>对于HTML，DOM使HTML形成了以可DOM树，包含文档，元素，节点</li>
+	<li>DOM中把以上内容都看作对象，我们获取过来的DOM元素是一个对象，所以称为文档对象模型</li>
+</ul>
+
+<h3>2.2 获取元素</h3>
+<p>页面中获取元素主要通过：①根据ID获取；②根据标签名获取；③根据H5新增的方法获取；④特殊元素获取；</p>
+
+<ul>
+	<li>根据ID获取：var obj = document.getElementById('要获取元素的ID');console.dir(obj);打印返回的元素对象，更好的查看里面的属性和方法</li>
+	<li>根据标签名获取：var obj = document.getElementsByTagName('标签名');返回的是带有指定标签名的对象的集合，以伪数组的方式存储，
+		所以我们想要操作里面的元素就需要遍历，得到的元素是动态的</li>
+	<li>根据H5新增的方法获取：var obj = document.getElementsByClassName('类名');根据类名返回元素对象集合 <br>
+		<strong>var obj = document.querySelector('选择器');根据指定选择器返回第一个元素对象，里面的选择器要加符号 如.nav #box</strong> <br>
+		<strong>var obj = document.querySelectorAll('选择器');根据指定选择器返回所有元素对象的集合</strong>
+	</li>
+	<li>特殊元素获取：var obj = document.body;返回body元素的对象；var obj = document.documentElement;返回HTML元素对象</li>
+</ul>
+
+<h3>2.3 事件基础</h3>
+<p>事件由三部分组成：事件源，事件类型，事件处理程序</p>
+<ul>
+	<li>事件源：事件被触发的对象</li>
+	<li>事件类型：如何触发，什么事件</li>
+	<li>事件处理程序：通过函数赋值形式</li>
+</ul>
+
+<p>执行事件的步骤：①获取事件源；②注册事件（绑定事件）；③添加事件处理程序（采取函数赋值形式）</p>
+<p>常见的鼠标事件：</p>
+<ul>
+	<li>onclick 鼠标点击左键触发</li>
+	<li>onmouseover 鼠标经过触发</li>
+	<li>onmouseout 鼠标离开触发</li>
+	<li>onfocus 获得鼠标焦点触发</li>
+	<li>onblur 失去鼠标焦点触发</li>
+	<li>onmousemove 鼠标移动触发</li>
+	<li>onmouseup 鼠标弹起触发</li>
+	<li>onmousedown 鼠标按下触发</li>
+</ul>
+
+<h3>2.4 操作元素</h3>
+<h4>2.4.1 改变元素内容</h4>
+<p>innerText和innerHTML都可以改变元素内容，但他们有一定区别</p>
+<ul>
+	<li>element.innerText;去除（不识别）HTML标签，同时空格和换行也会去掉</li>
+	<li>element.innerHTML;包括（识别）HTML标签，可以获取元素里面的内容</li>
+</ul>
+
+<h4>2.4.2 常用元素的属性操作：获取元素后直接赋值</h4>
+<p>常用元素：①innerText,innerHTML改变元素内容；②src，href路径；③id，alt，title；</p>
+<p>PS:表单里面的值文字内容是通过value来获取的，禁用表单或按钮是通过disabled属性disabled=true；</p>
+
+案例1：显示或隐藏密码
+<pre>
+	//1.获取元素
+	var eye = document.getElementById('eye');
+	var pwd = document.getElementById('password');
+	//2.注册事件 处理程序
+	var flag = 0;
+	eye.onclick = function({
+		if (flag == 0) {
+			pwd.type = 'text';
+			eye.src = 'img/open.png'
+			flag = 1;
+		} else {
+			pwd.type = 'password';
+			eye.src = 'img/close.png'
+			flag = 0;
+		}
+	});
+</pre>
+
+<h4>2.4.3 样式属性操作</h4>
+<p>我们可以通过JS修改元素的大小，颜色，位置等样式</p>
+<ul>
+	<li>element.style 行内样式操作</li>
+	<li>element.className 类名样式操作</li>
+</ul>
+<strong>注意：</strong>
+<ul>
+	<li>JS里面的样式采用的是驼峰命名法，如fontSize，backgroundColor；</li>
+	<li>JS修改样式产生的是行内样式，css权重比较高</li>
+	<li>如果样式修改比较多，可以采取操作类名的方式更改元素样式</li>
+	<li>class因为是保留字，因此使用className来操作元素类名属性</li>
+	<li>className会直接更改元素类名，会覆盖原先的类名，所以如果是需要修改其中一些样式，要把原来的类名也写上</li>
+</ul>
+
+<h4>2.4.5 排他思想</h4>
+<p>如果由同一组元素，我们想要某一个元素实现某种样式，需要用到循环的排他思想</p>
+<ol>
+	<li>所有的元素全部清除样式/设置同种样式（干掉其他人）</li>
+	<li>给当前元素设置样式（留下我自己）</li>
+	<li>注意顺序不能颠倒，先干掉其他人再设置自己</li>
+</ol>
+案例：全选和取消全选
+<pre>
+	1.全选和取消全选的做法：让下面所有复选框的checked属性（选中状态）跟随全选按钮
+	//获取元素
+	var btnAll = doucument.getElementById('btnAll');//全选按钮
+	var btns = document.getElementById('tb').getElementsByTagName('input');//下面复选框的所有按钮
+	//注册事件 处理程序
+	btnAll.onclick = function ({
+		for (var i = 0; i < btns.length; i++) {
+			btns[i].checked = this.checked;//this.checked可以得到当前全选按钮的选中状态，true就是选中，false就是未选中
+		}
+	});
+	2.下面的复选框需要全部选中，上面的全选才能选中做法：给下面的所有复选框都绑定事件，每次点击都要循环检查所有复选框是否全部选中
+	//给所有复选框循环绑定事件
+	for(var i = 0; i < btns.length; i++) {
+		btns[i].onclick = function ({
+			flag = 0;//flag控制全选按钮是否选中
+			//循环判断所有复选框是否全部选中
+			for(var i = 0; i < btns.length; i++) {
+				if (!btns[i].checked) {//如果有一个复选框未选中
+					flag = false;//那么全选按钮就未选中
+					break;//剩下的无需循环，提高执行效率
+				}
+			}
+			btnAll.checked = flag;
+		});
+	}
+</pre>
+
+<h4>2.4.6 自定义属性的操作</h4>
+<p>自定义属性的目的是为了保存并使用数据，有些数据可以保存到页面中而不用保存到数据库中 <br>
+	H5规定自定义属性以“data-”开头作为属性名并赋值或者使用setAttribute设置
+</p>
+<strong>获取属性值：</strong>①element.属性；②element.getAttribute('属性');<br>
+<strong>区别：</strong>①element.属性；获取内置属性值（元素本身自带的属性）<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;②element.getAttribute('属性');主要获得自定义的属性（标准）<br>
+<br>
+<strong>设置属性值：</strong>①element.属性 = 'value'；②element.setAttribute('属性', 'value');主要设置自定义属性<br>
+<strong>注意：</strong>element.setAttribute('class', 'value');class特殊，这里面写的就是class，而不是className<br>
+<br>
+<strong>移除属性：</strong>①element.className = ''；移除所有属性②element.removeAttribute('属性');<br>
+
+<h3>2.5 节点操作</h3>
+<p>获取元素的方式：①利用DOM提供的方法获取元素；如getElementById(),querySelector()等②利用节点的层级关系获取元素；</p>
+<strong>节点：</strong>
+<ul>
+	<li>nodeType 节点类型：元素节点nodeType = 1；属性节点nodeType = 2；文本节点nodeType = 3；文本节点包括文字，空格，换行 <br>
+	在实例开发中节点操作主要操作的是元素节点</li>
+	<li>nodeName 节点名称</li>
+	<li>nodeValue 节点值</li>
+</ul>
+<strong>2.5.1 父级节点：</strong>node.parentNode
+<ul>
+	<li>parentNode属性返回某节点的父节点，注意是最近的一个父节点</li>
+	<li>如果指定的节点没有父节点则返回null</li>
+</ul>
+
+<strong>2.5.2 子节点：</strong>
+<p> - parentNode.childNodes和parentNode.children</p>
+①parentNode.childNodes
+<ul>
+	<li>parentNode.childNodes返回包含指定节点的子节点的集合，即时更新</li>
+	<li>返回值里包含所有子节点，包括元素节点，文本节点即空格换行等也包括</li>
+	<li>如果只想获得里面的元素节点需要专门处理，不提倡使用childNodes</li>
+</ul>
+②parentNode.children获取所有的子元素节点，实际开发中常用
+<p> - parentNode.firstChild/parentNode.firstChild 和 parentNode.firstElementChild/parentNode.firstElementChild</p>
+<ul>
+	<li>parentNode.firstChild/parentNode.firstChild 返回父节点的第一个/最后一个子节点，找不到返回null，包含所有节点空格换行</li>
+	<li>parentNode.firstElementChild/parentNode.firstElementChild 返回父节点的第一个/最后一个子<strong>元素</strong>节点，找不到返回null，有兼容性问题</li>
+</ul>
+<strong>2.5.3 兄弟节点</strong>
+<p> - node.nextSibling/node.previousSibling 和 node.nextElementSibling/node.previousElementSibling</p>
+<ul>
+	<li>node.nextSibling/node.previousSibling 返回节点的下一个/上一个兄弟节点，找不到返回null，包含所有节点空格换行</li>
+	<li>node.nextElementSibling/node.previousElementSibling 返回父节点的下一个/上一个兄弟<strong>元素</strong>节点，找不到返回null，有兼容性问题</li>
+</ul>
+
+<p class="red">如何解决兼容性问题？</p>
+封装一个兼容性函数，例
+<pre>
+	function getNextElementSibling(element) {
+		val el = element;
+		while (el = el.nextSibling) {
+			if (el.nodeType === 1) {
+				return el;
+			}
+		}
+		return null;
+	}
+</pre>
+
+<strong>2.5.4 节点操作</strong>
+<ul>
+	<li>创建节点：document.createElement('tagName');动态创建；</li>
+	<li>添加节点：node.appendChild(child);将一个节点添加到指定父节点的子节点列表末尾,注意要先创建节点再添加；<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		          node.insertBefore(child, 指定元素);将一个节点添加到指定父节点的子节点列表开头；
+	</li>
+	<li>复制节点：node.cloneNode();括号里为空或false为浅拷贝，只复制标签不复制内容，true为深拷贝，复制标签复制内容；</li>
+	<li>删除节点：parentNode.removeNode(childNode);</li>
+</ul>
+
+<p>三种动态创建元素的区别</p>
+<ul>
+	<li>document.write();直接将内容写入页面的内容流，但是文档流执行完毕会导致页面重绘</li>
+	<li>document.innerHTML;将内容写入某个dom节点，不会导致页面重绘，创建多个元素效率更高（不要拼接字符串，采取数组方式拼接），结构稍微复杂</li>
+	<li>document.createElement();创建多个元素效率稍低，但结构清晰</li>
+</ul>
+
+<h3>2.6 DOM重点核心</h3>
+<p>DOM（Document Object Model，文档对象模型），是W3C组织推荐的处理可扩展标记语言的标准编程接口</p>
+<strong>DOM树</strong><br>
+<img src="../../img/17/DOMtree.png" height="350px" width="500px" alt=""/>
+<p>W3C定义了一系列的DOM接口，通过这些接口可以改变网页的内容，结构，和样式</p>
+<ul>
+	<li>对于JS，为了能使JS操作HTML，JS就有了一套自己的编程接口</li>
+	<li>对于HTML，DOM使HTML形成了以可DOM树，包含文档，元素，节点</li>
+	<li>DOM中把以上内容都看作对象，我们获取过来的DOM元素是一个对象，所以称为文档对象模型</li>
+</ul>
+<p>关于DOM操作，我们主要针对DOM元素进行操作，主要有：创建，增，删，改，查，属性操作，事件操作</p>
+<h4>2.6.1 创建</h4>
+<ol>
+	<li>document.write();</li>
+	<li>node.innerHTML直接赋值</li>
+	<li>document.createElement();</li>
+</ol>
+<h4>2.6.2 增</h4>
+<ol>
+	<li>node.appendChild(child);在后面添加</li>
+	<li>node.insertBefore(child,'指定元素');</li>
+</ol>
+<h4>2.6.3 删</h4>
+<ol>
+	<li>node.removeChild(child);</li>
+</ol>
+<h4>2.6.4 改</h4>
+<p>主要修改dom的元素属性，dom元素的内容，属性，表单的值</p>
+<ol>
+	<li>修改元素属性：src，href，title等</li>
+	<li>修改普通元素内容：innerHTML，innerText</li>
+	<li>修改表单元素：value，type，disabled</li>
+	<li>修改元素样式：style，className</li>
+</ol>
+<h4>2.6.5 查</h4>
+<p>主要获取查询dom的元素</p>
+<ol>
+	<li>DOM提供的API方法：getElementById(),getElementsByTagName()；古老方法，不推荐</li>
+	<li>H5提供的新方法：querySelector(),querySelectorAll();提倡</li>
+	<li>修改表单元素：value，type，disabled</li>
+	<li>利用节点操作获取元素：父（parentNode），子（children），兄（previousElementSibling、nextElementSibling）提倡</li>
+</ol>
+<h4>2.6.6 属性操作</h4>
+<p>主要针对自定义属性</p>
+<ol>
+	<li>setAttribute:设置dom的属性值/li>
+	<li>getAttribute:获得dom的属性值/li>
+	<li>removeAttribute:移除属性/li>
+</ol>
+<h4>2.6.7 事件操作</h4>
+<p>给元素注册事件，采取事件源（获取事件）-- 事件类型（注册事件）-- 事件处理程序（处理函数）</p>
+常见事件：
+<ul>
+	<li>onclick 鼠标点击左键触发</li>
+	<li>onmouseover 鼠标经过触发</li>
+	<li>onmouseout 鼠标离开触发</li>
+	<li>onfocus 获得鼠标焦点触发</li>
+	<li>onblur 失去鼠标焦点触发</li>
+	<li>onmousemove 鼠标移动触发</li>
+	<li>onmouseup 鼠标弹起触发</li>
+	<li>onmousedown 鼠标按下触发</li>
+</ul>
+</body>
+</html>
