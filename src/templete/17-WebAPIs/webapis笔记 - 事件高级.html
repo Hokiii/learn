@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>webapis笔记 - 事件高级</title>
+	<style>
+		.red {
+			color: red;
+		}
+		pre {
+			font-size: 18px;
+		}
+	</style>
+</head>
+<body>
+<h1>事件高级</h1>
+<h2>1. 注册事件（绑定事件）</h2>
+<hr>
+<p>给元素注册添加事件称为注册事件或绑定事件，有两种方式：传统方式和方法监听注册方式</p>
+<ul>
+	<li>传统注册方式：以on开头，如onclick等，特点是同一个元素只能设置一个处理函数，后面注册的事件会覆盖之前的</li>
+	<li>方法监听注册方式：它是一个方法，同一个元素可以注册多个监听器，按注册顺序执行 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		                  addEventListener(eventNameWithoutOn(不带on),callback回调函数,useCapture)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	                      attachEvent(eventNameWithOn(带on), callback回调函数)IE9以下使用
+	</li>
+
+</ul>
+<span class="red">注册事件兼容性解决方案</span>
+<pre>
+	function addEventListener(e, eName, fn){
+		//判断当前浏览器是否支持addEventListener方法
+		if (e.addEventListener){
+			e.addEventListener(eName, fn);
+		} else if {
+			e.attachEvent('on' + eName, fn);
+		}else {
+			e['on' + eName] = fn;
+		}
+	}
+	首先照顾大多数浏览器，再处理特殊浏览器
+</pre>
+
+<h2>2. 删除事件（解绑事件）</h2>
+<hr>
+<p>删除元素事件称为删除事件或解绑事件，也有两种方式：传统方式和方法监听注册方式</p>
+<ul>
+	<li>传统注册方式：element.事件名 = null；如divs[0].onclick = null;</li>
+	<li>方法监听注册方式：removeEventListener(eventNameWithoutOn(不带on),callback回调函数,useCapture)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		detachEvent(eventNameWithOn(带on), callback回调函数)IE9以下使用
+	</li>
+</ul>
+<span class="red">删除事件兼容性解决方案同上</span>
+
+<h2>3. DOM事件流</h2>
+<hr>
+<p>事件流描述的是从页面中接收事件的顺序，事件发生时会在元素节点之间按照特定的顺序传播，这个过程即DOM的事件流</p>
+<p>DOM事件流分为三个阶段：①捕获阶段；②当前目标阶段；③冒泡阶段</p>
+<img src="../../img/17/eventsteam.png" height="441" width="769" alt=""/><br>
+<strong class="red">注意：</strong>
+<ul>
+	<li>JS代码中只能执行捕获或者冒泡其中一个阶段</li>
+	<li>onclick和attachEvent只能得到冒泡阶段</li>
+	<li>addEventListener(eventNameWithoutOn(不带on),callback回调函数,useCapture)默认处于冒泡阶段，如果最后一个参数为true则处于捕获阶段</li>
+	<li>实际开发中我们很少使用事件驳货，更关注事件冒泡</li>
+	<li>有些事件是没有冒泡的，如onblur,onfocus,onmouseenter,onmouseleave</li>
+	<li>事件冒泡有时会带来麻烦有时又有好处，需要注意</li>
+</ul>
+<h2>4. 事件对象</h2>
+<hr>
+<p>事件对象就是事件发生后跟事件相关的一系列信息数据的集合都放到这个对象中，他有很多属性和方法</p>
+<pre>
+	element.事件名 = function(e) { 事件处理函数; }//其中的e就是事件对象，可以自己命名
+</pre>
+<ul>
+	<li>e就是一个事件对象，写到监听函数中（小括号里面）当形参来看</li>
+	<li>事件对象只有有了时间才会存在，是系统自动创建的，不需要传参</li>
+	<li>事件对象是事件相关的一系列数据的集合</li>
+	<li>可以自己命名</li>
+	<li>事件对象也有兼容性问题，解决：e = e || window.event;</li>
+</ul>
+<span><strong>事件对象常见的属性和方法</strong></span>
+<ul>
+	<li>e.target / e.srcElement(ie6-8) 返回触发事件的对象</li>
+	<li>e.type 返回事件的类型，如click，mouseover，不带on</li>
+	<li>e.stopPropagation()方法 / e.cancelBubble属性 属性值true/false(ie6-8) 阻止事件冒泡</li>
+	<li>e.preventDefault()方法 / e.returnValue属性 (ie6-8) 阻止默认事件，如不让链接跳转</li>
+</ul>
+<h2>5. 阻止事件冒泡</h2>
+<hr>
+<pre>
+    // 阻止冒泡  dom 推荐的标准 stopPropagation()
+    var son = document.querySelector('.son');
+    son.addEventListener('click', function(e) {
+        alert('son');
+        e.stopPropagation(); // stop 停止  Propagation 传播
+        e.cancelBubble = true; // 非标准 cancel 取消 bubble 泡泡
+    }, false);
+
+    var father = document.querySelector('.father');
+    father.addEventListener('click', function() {
+        alert('father');
+    }, false);
+    document.addEventListener('click', function() {
+        alert('document');
+    })
+</pre>
+<span class="red">阻止事件冒泡的兼容性解决方案</span>
+<pre>
+	if(e && e.stopPropagation){
+		e.stopPropagation();
+	}else {
+		window.e.cancelBubble = true;
+	}
+</pre>
+<h2>6. 事件委托（代理，委派）</h2>
+<hr>
+<p>事件委托也叫事件代理，事件委派，原理：不是给每个子节点设置监听器而是将事件监听器设置在父节点上，
+	然后利用冒泡原理影响每个子节点,然后我们只操作了一次DOM，提高了程序的性能</p>
+<img src="../../img/17/eventEntrust.jpg" height="550" width="650" alt=""/>
+
+<h2>7. 常用的鼠标事件</h2>
+<hr>
+<h3>7.1 禁止鼠标右键菜单（contextmenu主要用于取消默认的上下文菜单）</h3>
+<pre>
+	//contextmenu 我们可以禁用右键菜单
+        document.addEventListener('contextmenu', function(e) {
+                e.preventDefault();
+	});
+</pre>
+<h3>7.2 禁止鼠标选中（selectstart 开始选中）</h3>
+<pre>
+	//禁止选中文字 selectstart
+        document.addEventListener('selectstart', function(e) {
+            e.preventDefault();
+
+        });
+</pre>
+<h3>7.3 鼠标事件对象</h3>
+<ul>
+	<li>e.clientX/e.clientY  返回鼠标相对于浏览器窗口可视区的X/Y坐标</li>
+	<li>e.pageX/e.pageY  返回鼠标相对于文档页面的X/Y坐标，IE9+支持</li>
+	<li>e.screenX/e.screenY  返回鼠标相对于电脑屏幕的X/Y坐标，IE9+支持</li>
+</ul>
+<strong>写坐标时不要忘记给坐标添加px单位</strong>
+<h2>8. 常用的键盘事件</h2>
+<hr>
+<ul>
+	<li>onkeyup 某个键盘按键被松开时触发，不区分字母大小写</li>
+	<li>onkeydown 某个键盘按键被按下时触发，不区分字母大小写</li>
+	<li>onkeypress 某个键盘按键被按下时触发，区分字母大小写，不识别功能键</li>
+</ul>
+<span class="red" ><strong>注意：</strong>三个事件的执行顺序是：keydown -- keypress -- keyup，返回值是keyCode即按下的键的ASCII码</span>
+<br><br>案例1：按下s键获得输入框焦点 <br>
+<img src="../../img/17/keyCode.jpg" height="320" width="500" alt=""/>
+<br>案例2：仿京东快递单号输入 <br>
+
+<img src="../../img/17/keyboardevent.jpg" height="550" width="650" alt=""/>
+</body>
+</html>
