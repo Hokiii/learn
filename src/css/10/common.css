@@ -213,20 +213,36 @@
     background: url("../../img/10/img/icons.png") no-repeat;
 }
 .mod_service_zheng {
-    background-position:  -235px 0;
+    background-position:  -253px -3px;
 }
 .mod_service_ji {
-    background-position:  -238px -50px;
+    background-position:  -255px -54px;
 }
 .mod_service_wu {
-    background-position:  -240px -102px;
+    background-position:  -257px -105px;
 }
 .mod_service_te {
-    background-position:  -240px -154px;
+    background-position:  -257px -156px;
 }
 .mod_service_bang {
-    background-position:  -240px -206px;
+    background-position:  -257px -209px;
 }
+
+/*.mod_service_zheng {*/
+/*    background-position:  -235px 0;*/
+/*}*/
+/*.mod_service_ji {*/
+/*    background-position:  -238px -50px;*/
+/*}*/
+/*.mod_service_wu {*/
+/*    background-position:  -240px -102px;*/
+/*}*/
+/*.mod_service_te {*/
+/*    background-position:  -240px -154px;*/
+/*}*/
+/*.mod_service_bang {*/
+/*    background-position:  -240px -206px;*/
+/*}*/
 .mod_service_tit {
     float: left;
     margin-left: 5px;

@@ -7,13 +7,25 @@
 }
 .focus {
     position: relative;
+    overflow: hidden;
     width: 720px;
     height: 455px;
 }
+.focus ul {
+    position: absolute;
+}
+.focus ul li {
+    float: left;
+}
+.focus img {
+    width: 720px;
+}
 .arr-l,
 .arr-r {
+    display: none;
     position: absolute;
     top: 50%;
+    z-index: 1;
     margin-top: -20px;
     width: 24px;
     height: 40px;
@@ -119,41 +131,78 @@
     margin: 10px auto;
 }
 .service_ico_huafei {
-    background-position: 0 -12px;
+    background-position: -16px -16px;
 }
 .service_ico_jipiao {
-    background-position: -60px -12px;
+    background-position: -77px -16px;
 }
 .service_ico_dianyingpiao {
-    background-position: -125px -12px;
+    background-position: -140px -16px;
 }
 .service_ico_youxi {
-    background-position: -189px -12px;
+    background-position: -205px -16px;
 }
 .service_ico_caipiao {
-    background-position: 0 -82px;
+    background-position: -16px -88px;
 }
 .service_ico_jiayouka {
-    background-position: -60px -82px;
+    background-position: -77px -88px;
 }
 .service_ico_jiudian {
-    background-position: -125px -82px;
+    background-position: -140px -88px;
 }
 .service_ico_huochepiao {
-    background-position: -189px -82px;
+    background-position: -205px -88px;
 }
 .service_ico_zhongchou {
-     background-position: 0 -153px;
- }
+    background-position: -16px -159px;
+}
 .service_ico_licai {
-    background-position: -60px -153px;
+    background-position: -77px -159px;
 }
 .service_ico_lipinka {
-    background-position: -125px -147px;
+    background-position: -140px -153px;
 }
 .service_ico_baitiao {
-    background-position: -189px -153px;
+    background-position: -205px -159px;
 }
+
+/*.service_ico_huafei {*/
+/*    background-position: 0 -12px;*/
+/*}*/
+/*.service_ico_jipiao {*/
+/*    background-position: -60px -12px;*/
+/*}*/
+/*.service_ico_dianyingpiao {*/
+/*    background-position: -125px -12px;*/
+/*}*/
+/*.service_ico_youxi {*/
+/*    background-position: -189px -12px;*/
+/*}*/
+/*.service_ico_caipiao {*/
+/*    background-position: 0 -82px;*/
+/*}*/
+/*.service_ico_jiayouka {*/
+/*    background-position: -60px -82px;*/
+/*}*/
+/*.service_ico_jiudian {*/
+/*    background-position: -125px -82px;*/
+/*}*/
+/*.service_ico_huochepiao {*/
+/*    background-position: -189px -82px;*/
+/*}*/
+/*.service_ico_zhongchou {*/
+/*     background-position: 0 -153px;*/
+/* }*/
+/*.service_ico_licai {*/
+/*    background-position: -60px -153px;*/
+/*}*/
+/*.service_ico_lipinka {*/
+/*    background-position: -125px -147px;*/
+/*}*/
+/*.service_ico_baitiao {*/
+/*    background-position: -189px -153px;*/
+/*}*/
 .bargin {
     height: 75px;
     margin-top: 5px;
